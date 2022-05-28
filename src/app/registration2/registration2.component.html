@@ -1,0 +1,74 @@
+
+<div class="container">
+    <div class="row mt-5 shadow-sm">
+        <div class="col-12">
+            <div class=" card login_card  border-0">
+                <h1>{{'Registration Form'|translate}}</h1>
+                    <hr>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class=" card login_card  border-0">     
+            <mat-form-field appearance="legacy">
+                <mat-label>{{'Enter your name'|translate}}</mat-label>
+                <input [(ngModel)]="user.name" #name="ngModel" matInput required="true">
+                <mat-hint *ngIf="name.errors?.['required']">{{'Name is required.'|translate}}</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy">
+                <mat-label>{{'Enter your phone no.'|translate}}</mat-label>
+                <input [(ngModel)]="user.mobile" pattern="^(\+[\d]{1,5}|0)?[7-9]\d{9}$" #mob="ngModel" matInput required="true">
+                <mat-hint *ngIf="!email.invalid && (mob.dirty || mob.touched) && mob.errors?.['pattern']" class="danger">Plz enter your correct number. </mat-hint>
+                <mat-hint *ngIf="mob.errors?.['required']">{{'Number is required.'|translate}}
+                </mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy">
+                <mat-label>{{'Enter your email'|translate}}</mat-label>
+                <input [(ngModel)]="user.email" pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}" #email="ngModel" matInput required>
+                <mat-hint *ngIf="!email.invalid && (email.dirty || email.touched) && email.errors?.['pattern']" class="danger">adada</mat-hint>
+                <mat-hint *ngIf="email.errors?.['required']">{{'Email is Required.'|translate}}</mat-hint>
+                <mat-hint *ngIf="email.errors?.['pattern']" class="danger">{{'Enter valid email address.'|translate}}</mat-hint>  
+            </mat-form-field>
+
+            <mat-form-field appearance="legacy">
+                <mat-label>{{'Enter your occupation'|translate}}</mat-label>
+                <input [(ngModel)]="user.occupation" #occupation="ngModel" matInput>
+            </mat-form-field>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+            <div class=" card login_card  border-0">
+                <mat-form-field appearance="legacy">
+                    <mat-label>{{'Enter your address'|translate}}</mat-label>
+                    <input [(ngModel)]="user.address" #add="ngModel" matInput>
+                    <mat-hint *ngIf="add.errors?.['required']">{{'Address is required.'|translate}}</mat-hint>               
+                </mat-form-field>
+    
+                <mat-form-field appearance="legacy">
+                    <mat-label>{{'Enter your password'|translate}}</mat-label>
+                    <input [(ngModel)]="user.password" #pass="ngModel" required minlength="6" pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" matInput [type]="hide ? 'password' : 'text'">
+                    <mat-hint *ngIf="pass.errors?.['pattern']" class="danger">{{'A password must be six characters including one uppercase letter, one special character and alphanumeric characters.'|translate}}</mat-hint>  
+                    <mat-hint *ngIf="pass.errors?.['required']">{{'Password is required.'|translate}}</mat-hint>
+                    <div *ngIf="pass.errors?.['minlength']"></div>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon style="margin-right: 10px;font-size:21px">{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+    
+                <mat-form-field appearance="legacy">
+                    <mat-label>{{'Confirm your password'|translate}}</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon style="margin-right: 10px;font-size:21px;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-hint *ngIf=""></mat-hint>
+                    </button>
+                </mat-form-field>
+                <mat-checkbox class="example-margin">{{'I agree with terms and conditions'|translate}}</mat-checkbox>
+                <button (click)="register()" onclick="matchPassword()" class="mt-5 register">{{'Register'|translate}}</button>
+            </div>      
+        </div>
+    </div>
+</div>
+

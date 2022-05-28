@@ -1,0 +1,37 @@
+<div style="width:95%;margin:auto;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Sno.</th>
+                <th scope="col">Tool Name</th>
+
+                <th scope="col">Payment</th>
+                <th scope="col">Booking Date</th>
+                <th scope="col">Total</th>
+                <th scope="col">Charges</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">Address</th>
+                <!-- <th scope="col">Cancel</th>  -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of itemData index as i" style="cursor: pointer;" (click)="openDialog(item)">
+                <td>{{i+1}}</td>
+                <td>{{item.orderList[0].tool_id.name}}</td>
+                <td>{{item.payment}}</td>
+                <td>{{item.orderList[0].bookingDate | date : 'mediumDate'}}</td>
+                <td>{{item.total}}</td>
+                <td>{{item.orderList[0].tool_id.charges}}</td>
+                <td>{{item.mobile}}</td>
+                <td>{{item.address}}</td>
+
+                <!-- <td></td>
+        <td><button class="btn btn-warning" (click)="cancelRequest()">Cancel</button></td> -->
+
+            </tr>
+
+        </tbody>
+    </table>
+
+
+</div>

@@ -1,0 +1,58 @@
+<div class="search_box">
+    
+</div>
+<header>
+    <div class="header_banner">
+        <div class="header">
+            <div class="header_info">
+                <ul>
+                    <li><i class="fa-solid fa-envelope"></i> kisansakha@gmail.com</li>
+                    <li><i class="fa-solid fa-location-dot"></i> Rajwada Square</li>
+                    <li><i class="fa-solid fa-phone"></i> 7779089012</li>
+                </ul>
+            </div>
+            <div class="header_icon">
+                <ul>
+                    <li class="search"><i class="fa-solid fa-magnifying-glass"></i></li>
+                    <li><i class="fa-brands fa-facebook-square"></i></li>
+                    <li><i class="fa-brands fa-twitter-square"></i></li>
+                    <li><i class="fa-brands fa-instagram-square"></i></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <nav (scroll)="onScroll()" [class.fixed]="fixed">
+        <div class="left_nav">
+            
+                    <i class="fa-solid fa-bars ms-5 me-5" id="toggle_menu" (click)="toggleFun()"><a href=""></a></i>
+            
+                    <img routerLink="" src="../../assets/img/our3.png" width='70px' height="60px" alt="">
+                
+        </div>
+
+        <div class="right_nav " [class.show]="toggle">
+            <i class="fas fa-close" id="close_menu" (click)="toggleFun()"></i>
+            <ul>
+
+                <li><a routerLink="services">Services</a></li>
+                <li><a routerLink="contract-farming">Contract Farming</a></li>
+                <li><a routerLink="storage">Storage</a></li>
+                <li><a routerLink="about-us">About</a></li>
+                <li><a href="">Contact</a></li>                
+            </ul>
+        </div>
+
+        <div class="dropdown" style="float:right;">
+            <i class=" fas fa-user dropbtn" id="user" ></i>
+            
+            <div class="dropdown-content">
+                <a *ngIf='!isLoggedIn()' routerLink="sign-up">Signup</a>
+                <a *ngIf='!isLoggedIn()' routerLink="sign-in">Signin</a>
+                <a *ngIf='isLoggedIn()' (click)='signOut()' routerLink="sign-in">Signout</a>
+                <a *ngIf='isLoggedIn()'  routerLink="history">History</a>
+            </div>
+        </div> 
+    </nav>
+</header>
+

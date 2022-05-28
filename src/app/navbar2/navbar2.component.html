@@ -1,0 +1,54 @@
+<div class="header">
+    <div class="inner_header">
+        <div class="header_info mt-3">
+            <span class="p-2"><i class="fa-solid fa-envelope"></i> kisansakha@gmail.com</span>
+            <span class="p-2"><i class="fa-solid fa-location-dot"></i>Rajwada Square</span>
+            <span class="p-2"><i class="fa-solid fa-phone"></i> 7779089012</span>
+        </div>
+        <div class="header_icons mt-3">
+            <div class="header_search me-2">
+                <i class="fa-solid fa-magnifying-glass p-2"></i>
+            </div>
+            <div class="social_icons ps-2">
+                <i class="fa-brands fa-facebook-square p-2"></i>
+                <i class="fa-brands fa-twitter-square p-2"></i>
+                <i class="fa-brands fa-instagram-square p-2"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="navbar" (scroll)="onScroll()" [class.fixed]="fixed">
+    <div class="nav">
+        <div class="logo ">
+            <img src="../../assets/img/our3.png" routerLink="" width="90px" alt="">
+        </div>
+        <div class="nav_menu">
+            <i class="fas fa-close" id="close_menu"></i>
+            <ul class="nav_list">
+                <li routerLink="services" class="nav_item"><a class="nav_link">Services</a></li>
+                <li routerLink="storage" class="nav_item"><a  class="nav_link">Storage</a></li>
+                <li routerLink="contract-farming" class="nav_item"><a  class="nav_link">Contract Farming</a></li>
+                <li class="nav_item"><a class="nav_link">About</a></li>
+                <li class="nav_item"><a  class="nav_link">Contact</a></li>
+
+            </ul>
+        </div>
+        <div class="sidebar">
+            <div class="userDropdown">
+                <button class="user_btn"><i class=" fas fa-user" id="user" ></i></button>
+                    <div class="user_dropdown">
+                        <a  routerLink="sign-in">
+                            Sign in
+                        </a>
+                        <a  routerLink="sign-up">
+                            Sign up
+                        </a>
+                    </div>
+            </div>
+            
+            <i class="fa-solid fa-bars ms-5 me-5" id="toggle_menu"></i>
+            
+        </div>
+    </div>
+</div>

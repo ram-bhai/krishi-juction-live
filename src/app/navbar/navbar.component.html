@@ -1,0 +1,23 @@
+<div class="header">
+
+    
+</div>
+<div class="navbar" (scroll)="onScroll()"  [class.fixed]="fixed" >
+    <div class="nav">
+        <div class="logo"></div>
+        <nav id="nav_menu" [class.show]="toggle">
+            <i class="fas fa-close" id="close_menu" (click)="toggleFun()"></i>
+            <ul class="nav_list">
+                <li class="nav_item"><a href="" routerLink="" class="nav_link">Service</a></li>
+                <li class="nav_item"><a href="" class="nav_link">Stroage</a></li>
+                <li class="nav_item"><a href="" class="nav_link">Contract Farming</a></li>
+                <li class="nav_item"><a href="" class="nav_link">About</a></li>
+                <li class="nav_item"><a href="" class="nav_link">Contact</a></li>
+            </ul>
+        </nav>
+        <div class=" sidebar">
+            <i class=" fas fa-user" id="user" style="margin:auto;font-size:24px;"></i>
+            <i class="fa-solid fa-bars ms-5 me-5" (click)="toggleFun()" id="toggle_menu"></i>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="description">
+    Your items weight be calculated in <strong>kilo gram</strong> 
+</div>
+<div class="items" appItems>
+                    <mat-checkbox [(ngModel)]="fruit.selected" #name *ngFor="let fruit of fruits"    class="example-margin" >{{fruit.name}}</mat-checkbox>
+                </div>
+                <div class="weight" *ngFor="let fruit of fruits">
+                    <label for="" *ngIf="fruit.selected">
+                        {{fruit.name}} : <input type="number" #weight *ngIf="fruit.selected" (change)="wiehgt(fruit.name,weight.value)" width="fit-content"> 
+                    </label>
+                </div>

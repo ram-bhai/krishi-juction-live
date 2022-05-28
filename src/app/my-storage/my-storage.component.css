@@ -1,0 +1,20 @@
+::ng-deep :root{
+    --orange:#f1b814;
+    --pink:#bd1e51;
+    --purple:#490b3d;
+}
+
+table {
+    width: 100%;
+}
+
+tbody tr:hover{
+    box-shadow:2px 2px 5px rgba(0,0,0,0.5);
+    border-right: 3px solid var(--pink);
+    border-left: 3px solid var(--pink);
+}
+
+.user{
+    text-align: center;
+    margin:20px auto;
+}

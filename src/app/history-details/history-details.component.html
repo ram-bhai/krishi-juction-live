@@ -1,0 +1,24 @@
+
+<div class="user_details">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <h1>Name :</h1>
+                <p>Service Name :  {{data.orderList[0].tool_id.name}}</p>
+                <p>Service Address : {{data.address}}</p>
+                <p>Service Booking date : {{data.orderList[0].bookingDate | date : 'mediumDate'}}</p>
+                <p>Booking amount : {{data.total}}</p>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                
+                <img src="{{data.orderList[0].tool_id.images}}" width="200px" height="250px">
+                <div class="items" *ngFor="let items of data.items">
+                    <p>Name : {{items.name}}</p>
+                    <p>Your product amount : {{items.weight}}</p>
+                    <p>Start Date : {{items.bookingDate| date : 'mediumDate'}}</p>
+                    <p>End Date : {{items.date| date : 'mediumDate'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

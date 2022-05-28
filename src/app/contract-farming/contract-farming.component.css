@@ -1,0 +1,37 @@
+::ng-deep :root{
+  --orange:#f1b814;
+  --pink:#bd1e51;
+  --purple:#490b3d;
+}
+
+.details_card{
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin:auto;
+}
+
+.details{
+  display:flex;
+  flex-direction:column;
+  padding:10px;
+}
+
+input[type="file"],
+mat-form-field{
+  margin:5px;
+}
+
+.details input[type="file"]::file-selector-button{
+  color:var(--pink);
+  padding:5px;
+}
+.details button{
+  background-color:var(--pink);
+  width:fit-content;
+  color:white;
+  border:none;
+  font-size:18px;
+}
+
+.details button:hover{
+  box-shadow: 5px 5px 2px -4px rgba(0, 0, 0, 0.2),5px 4px 5px 0px rgba(0, 0, 0, 0.14),5px 3px 5px 5px rgba(0, 0, 0, 0.12);
+}

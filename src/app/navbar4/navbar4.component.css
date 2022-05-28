@@ -1,0 +1,265 @@
+::ng-deep :root{
+    --orange:#f1b814;
+    --pink:#bd1e51;
+    --purple:#490b3d;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    height:70px;
+    width:100%;
+    background-color:white;
+    z-index:100;
+}
+
+.logo_toggle{
+    display:none;
+}
+
+nav .nav_bar{
+    position: relative;
+    height: 100%;
+    max-width:1000px;
+    width:100%;
+    margin:0 auto;
+    padding: 0 30px;
+    display:flex;
+    align-items: center;
+    justify-content:space-between;
+}
+
+.sidebarOpen{
+    color:black;
+    font-size:25px;
+    padding:5px;
+    cursor:pointer;
+    display:none;
+}
+
+nav .nav_bar .logo a{
+    font-size:25px;
+    font-weight:500;
+    position: relative;
+    color:var(--purple);
+    text-decoration:none;
+}
+
+nav .nav_bar .logo a:before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height:2px;
+    background-color: var(--purple)
+}
+
+.nav_links{
+    display: flex;
+    align-items:center;
+}
+
+.nav_links li{
+    margin: 0 5px;
+    list-style: none;
+}
+
+.nav_links li a{
+    position:relative;
+    font-size:17px;
+    font-weight: 400;
+    color:black;
+    text-decoration: none;
+    padding:10px;
+    transition:0.4s ease-in-out;
+}
+
+.nav_links li a:before{
+    content: " ";
+    position:absolute;
+    left:50%;
+    bottom:0;
+    height:2px;
+    width:0%;
+    background-color:var(--pink);
+    transition:0.4s ease-in-out;
+}
+
+.nav_links li a:hover:before{
+    left:0;
+    width:100%;
+}
+
+.nav_links li a:hover{
+    color: var(--pink);
+}
+
+.darkLight_searchbox{
+    display:flex;
+    align-items: center
+}
+
+.darkLight_searchbox .dark-light,
+.darkLight_searchbox .searchToggle{
+    height:40px;
+    width:40px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin:0 5px;
+}
+
+.dark-light i,
+.searchToggle i{
+    position:absolute;
+    color:var(--pink);
+    font-size:22px;
+    cursor:pointer;
+}
+
+.dark-light i.sun{
+    opacity:0;
+    pointer-events:none;
+}
+
+.searchToggle i.cancel{
+    opacity:0;
+    pointer-events:none;
+}
+
+.searchToggle.active i.cancel{
+    opacity:1;
+    pointer-events:auto;
+}
+
+
+.dropdown i{
+    font-size:17px;
+    font-weight: 400;
+    color:var(--pink);
+    padding:10px;
+    border-radius:50%;
+}
+
+.dropdown i:hover{
+    color:white;
+    background-color:var(--pink);
+    box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+}
+
+
+.searchToggle.active i.search{
+    opacity:0;
+    pointer-events:none;
+}
+
+.searchbox{
+    position:relative;
+}
+
+.search_field{
+    position:absolute;
+    right:5px;
+    bottom:-85px;
+    height:50px;
+    width:300px;
+    display:flex;
+    align-items:center;
+    background-color:var(--pink);
+    padding:3px;
+    border-radius:6px;
+    box-shadow:0 5px 5px rgba(0,0,0,0.1);
+    pointer-events: none;
+    opacity:0;
+    transition:all 0.3s ease;
+}
+
+.searchToggle.active ~ .search_field{
+    opacity:1;
+    bottom:-75px;
+    pointer-events:auto;
+}
+
+.search_field:before{
+    content:'';
+    position:absolute;
+    right:14px;
+    top:-4px;
+    height:12px;
+    width:12px;
+    background-color:var(--pink);
+    transform:rotate(-45deg);
+    z-index:-1;
+}
+
+.search_field input{
+    height:100%;
+    width:100%;
+    padding:0 45px 0 15px;
+    outline:none;
+    border:none;
+    border-radius:4px;
+    font-weight: 400;
+    font-size:14px;
+}
+
+.search_field i{
+    position:absolute;
+    color:var(--pink);
+    right:15px;
+    font-size:22px;
+}
+
+@media (max-width: 768px) {
+
+    .sidebarOpen{
+        display:block;
+    }
+    .menu{
+        position:fixed;height:100%;
+        height:100%;
+        width:320px;
+        left:-100%;
+        top:0;
+        background-color: var(--purple);
+        z-index:100;
+    }
+
+    .show{
+        left:0%;
+    }
+
+    .logo_toggle{
+        width:100%;
+        padding:10px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+    }
+
+    .logo_toggle .sidebar{
+        color:white;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .nav_links{
+        flex-direction: column;
+        padding:20px;
+    }
+
+    .nav_links .link_items .nav_a{
+        display:block;
+        margin-top: 20px;
+        color:white;
+    }
+
+}

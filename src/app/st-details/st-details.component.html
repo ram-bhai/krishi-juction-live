@@ -1,0 +1,22 @@
+<div class="user_details">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <h1>Name : {{data.userId.name}}</h1>
+                <p>Storage Name : {{data.storage_id.name}}</p>
+                <p>Storage Address : {{data.storage_id.location}}</p>
+                <p>Storage Booking date : {{data.date | date : 'mediumDate'}}</p>
+                <p>Booking amount : {{data.total}}</p>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                Your items details
+                <div class="items" *ngFor="let items of data.items">
+                    <p>Name : {{items.name}}</p>
+                    <p>Your product amount : {{items.weight}}</p>
+                    <p>Start Date : {{items.bookingDate| date : 'mediumDate'}}</p>
+                    <p>End Date : {{items.date| date : 'mediumDate'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

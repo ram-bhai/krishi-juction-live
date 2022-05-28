@@ -1,0 +1,28 @@
+
+<div class="form">
+    <div class="card login_card shadow-sm border-0">
+        <h1>{{'Your Profile'|translate}}</h1>
+        <mat-form-field appearance="legacy">
+            <input [(ngModel)]="user1.name" matInput name="" id="account-fn" placeholder="{{user.name}}">  
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+            <input [(ngModel)]="user1.occupation" matInput id="account-ln" placeholder="{{user.occupation}}">  
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+            <input [(ngModel)]="user1.email" name="email" matInput placeholder="{{email}}" disabled="">  
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+            <input [(ngModel)]="user1.mobile" matInput placeholder="{{mobile}}">  
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+            <input [(ngModel)]="user1.address" matInput placeholder="{{address}}">  
+        </mat-form-field>
+        
+        <button (click)="saved()" class="signin">{{'Update'|translate}}</button>
+        
+    </div>
+</div>

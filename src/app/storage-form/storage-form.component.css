@@ -1,0 +1,25 @@
+::ng-deep :root{
+    --orange:#f1b814;
+    --pink:#bd1e51;
+    --purple:#490b3d;
+}
+
+.items{
+    margin-top:10px;
+    max-width:400px;
+    border:1px solid var(--purple);
+    padding:10px;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+mat-checkbox{
+    margin:10px;
+}
+
+.weight{
+    margin-top:10px;
+    max-width:400px;
+    margin:10px;
+}
+

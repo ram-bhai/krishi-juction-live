@@ -1,0 +1,209 @@
+.cards{
+    position: relative;
+    height:450px;
+    width:900px;
+    margin:200px auto;
+    background:#fff;
+    box-shadow: 7px 7px 50px 0px rgba(0,0,0,0.7);
+}
+
+.thumbnails{
+    float:left;
+    position: relative;
+    left:30px;
+    top:-30px;
+    height:320px;
+    width:530px;
+    box-shadow: 8px 8px 50px 0px rgba(0,0,0,0.7);
+    overflow:hidden;
+}
+
+img .left{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50% ,-50% );
+    height:100%;
+    width:100%;
+
+}
+
+.right{
+    margin-left:590px;
+    margin-right:20px;
+}
+
+h1{
+    padding-top:15px;
+    font-size:1.3rem;
+    color:#4b4b4b;
+}
+
+.author{
+    background:#9ecaff;
+    height:30px;
+    width:110px;
+    border-radius:20px;
+}
+
+h2{
+    /* padding-top:8px;
+    margin-right:6px; */
+    text-align:center;
+    font-size:.8rem;
+    color:#fff;
+}
+
+.email{
+    opacity:.75;
+    text-overflow: ellipsis;
+    overflow:hidden;
+}
+
+h5{
+    position:absolute;
+    left:30px;
+    bottom:80px;
+    font-size:6rem;
+    color:#c3c3c3;
+}
+
+h6{
+    position:absolute;
+    left:30px;
+    bottom:8px;
+    font-size:2rem;
+    color:#c3c3c3;
+}
+
+ul{
+    margin-left:250px;
+}
+
+li{
+    display:inline;
+    list-style:none;
+    padding-right:40px;
+    font-size:38px;
+    color:#7b7b7b;
+}
+
+.fab{
+    position:absolute;
+    right:50px;
+    bottom:-30px;
+    padding-top:14px;
+    background:#1875d0;
+    width:60px;
+    height:60px;
+    font-size:38px;
+    color:#fff;
+    text-align:center;
+    border-radius:50%;
+    box-shadow:5px 5px 30px 0px rgba(0,0,0,0.7);
+    box-sizing: border-box;
+}
+
+/* my works start */
+
+.left2{
+    position:relative;
+}
+
+.cards2{
+    position: relative;
+    height:350px;
+    margin:200px auto;
+    background:#fff;
+    box-shadow: 7px 7px 50px 0px rgba(0,0,0,0.7);
+}
+
+.left2_img{
+    position:absolute;
+    box-shadow: 8px 8px 50px 0px rgba(0,0,0,0.7);
+    width:90%;
+    height:90%;
+    left:50%;
+    top:-30px;
+    transform:translateX(-50%);
+}
+
+.cards2 h1{
+    font-size:28px;
+    font-weight:bold;
+}
+
+.cards2 .book_now{
+    background-color: #72A603;
+    margin-right:10px;
+    border:none;
+    padding:10px;
+    font-size:20px;
+    color:#FEFFED;
+    border-radius:10px;
+}
+
+.cards2 .view_more{
+    background-color:#FEFFED;
+    margin-right:10px;
+    border:none;
+    padding:10px;
+    font-size:20px;
+    color: #72A603;
+    border-radius:10px;
+    border:1px solid #72A603;
+}
+
+.cards2 .book_now:hover,
+.cards2 .view_more:hover{
+    box-shadow: 5px 5px 12px rgba(0,0,0,0.5);
+}
+
+.cards2 h3{
+    margin-top:10px;
+    font-size:20px;
+}
+
+.description{
+    
+    height:40px;
+    text-overflow: ellipsis;
+    overflow:hidden;
+}
+
+.cards2 h4{
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.reviews{
+    font-size: 20px;
+    margin-top: 20px;
+    color: yellow;
+}
+
+.reviews i{
+    margin-right:10px;
+}
+
+.icons{
+    position: absolute;
+    bottom: -7%;
+    left: 40%;
+}
+
+.icons i{
+    margin-right:30px;
+    font-size:28px;
+    background-color:white;
+    color:green;
+    padding:10px;
+    border-radius:50%;
+}
+
+/* star ratting css */
+
+ngb-rating {
+    color: #FFC107;
+    font-size: 30px;
+}

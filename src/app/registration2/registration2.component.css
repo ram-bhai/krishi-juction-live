@@ -1,0 +1,56 @@
+::ng-deep :root{
+  --orange:#f1b814;
+  --pink:#bd1e51;
+  --purple:#490b3d;
+}
+
+.login_card{
+    margin:auto;
+    max-width: 450px;
+    width: 100%;
+    padding:10px;
+  }
+
+  .example-container .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  
+  .example-right-align {
+    text-align: right;
+  }
+  
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  input.example-right-align {
+    -moz-appearance: textfield;
+  }
+
+  .login_card h1{
+    text-align:center;
+    color:var(--pink);
+    font-size:28px;
+    font-weight:bold;
+    text-transform:uppercase;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  }
+
+  /* mat-form-field{
+    font-size:20px;
+  } */
+
+  .login_card .register{
+    padding:10px;
+    border-radius:10px;
+    border:none;
+    font-size:24px;
+    width:fit-content;
+    background-color: var(--pink);
+    color: white;
+  }
+
+  .login_card .register:hover{
+    box-shadow: 5px 5px 12px rgba(0,0,0,0.5);
+  }
