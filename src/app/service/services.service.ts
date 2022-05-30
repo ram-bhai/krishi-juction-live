@@ -8,8 +8,8 @@ import {Service} from '../model/service';
 export class ServicesService {
    
   constructor(private http: HttpClient) { }
-  order = "https://krishi-backend.herokuapp.com/order/place-order";
-  // order = "http://localhost:3000/order/place-order";
+  //order = "https://krishi-backend.herokuapp.com/order/place-order";
+  order = "http://localhost:3000/order/place-order";
   view_history = "https://krishi-backend.herokuapp.com/order/view-order/";
   // view_history = "http://localhost:3000/order/view-order/";
   // review = "http://localhost:3000/service/review/"
