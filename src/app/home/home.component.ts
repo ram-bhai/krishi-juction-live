@@ -215,11 +215,7 @@ export class HomeComponent implements OnInit {
   isLoggedIn(){
     return this.userService.checkToken();
   }
-  // open_dialog(){
-  //   this.dialog.open(StorageFormComponent,{
-  //     disableClose:false
-  //   });
-  // }
+
   service_item(id:any){
   
     console.log(id);
@@ -243,7 +239,7 @@ export class HomeComponent implements OnInit {
   saved(){
     
     if(this.isLoggedIn()){
-      this.onPay(this.total);
+    //  this.onPay(this.total);
       this.orderList = [{bookingDate:this.bookingDate,tool_id:this.tid}];
 
       this.service.userId = this.id;
@@ -263,7 +259,6 @@ export class HomeComponent implements OnInit {
          }
          else if(err.status == 500){
            this.notifyService.warning("Something is wrong..!")
-         // alert(err);
        }
      }
      })

@@ -116,7 +116,7 @@ onPay(amount:any){
       console.log(data);
       var options = {
       "key": "rzp_test_MqoJug1nXNqVws", // Enter the Key ID generated from the Dashboard
-      "amount": amt*10, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "amount":"1", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       "currency": "INR",
       "name": "Acme Corp",
       "description": "Test Transaction",
@@ -160,7 +160,7 @@ onPay(amount:any){
   selected:any;
   save(){
     
-      this.onPay(this.total);
+     this.onPay(this.total);
       this.orderList = [{bookingDate:this.bookingDate,tool_id:this.tid}];
 
       this.service.userId = this.id;
@@ -183,7 +183,7 @@ onPay(amount:any){
         }
          else if(err.status == 500){
            this.notifyService.warning("Something is wrong..!")
-         // alert(err);
+         
        }
      }
      })
