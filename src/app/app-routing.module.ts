@@ -18,6 +18,7 @@ import { SearchComponent } from './search/search.component';
 import { StorageDetailsComponent } from './storage-details/storage-details.component';
 import { FavoriteComponent} from './favorite/favorite.component';
 import { WareStorageComponent } from './ware-storage/ware-storage.component';
+import { ContractListsComponent } from './contract-lists/contract-lists.component';
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'ware-storage/:id', component: WareStorageComponent },
@@ -36,8 +37,9 @@ const routes: Routes = [
   {path:'favorite',component:FavoriteComponent},
   {path:'storage-details/:id',component:StorageDetailsComponent},
   {path:"mystorage",component:MyStorageComponent},
+  {path:'contract-list', component:ContractListsComponent},
   {path:"**",component:ErrorhandlingComponent},
- 
+
 ];
 
 @NgModule({

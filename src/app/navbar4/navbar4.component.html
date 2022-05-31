@@ -10,7 +10,15 @@
             </div>
 
             <ul class="nav_links">
-                <li class="link_items"><a class="nav_a" routerLink="contract-farming" href="">{{'CONTRACT FARMING' | translate}}</a></li>
+                <li class="link_items dropdown"><a class="nav_a" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" href="">{{'CONTRACT FARMING' | translate}}</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" style="cursor: pointer" routerLink="contract-farming">Rgistration</a></li>
+
+                        <li><a class="dropdown-item" style="cursor: pointer" routerLink="contract-list">lands list</a></li>
+
+                    </ul>
+                </li>
+                <!-- <li class="link_items"><a class="nav_a" routerLink="contract-farming" href="">{{'CONTRACT FARMING' | translate}}</a></li> -->
                 <li class="link_items"><a class="nav_a" routerLink="services" href="">{{'EQUIPMENT'| translate}}</a></li>
                 <li class="link_items dropdown"><a class="nav_a" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" href="">{{'STORAGE' | translate}}</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">

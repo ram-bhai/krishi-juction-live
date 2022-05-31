@@ -76,6 +76,8 @@ import { FavoriteComponent } from './favorite/favorite.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { WareStorageComponent } from './ware-storage/ware-storage.component';
+import { ContractListsComponent } from './contract-lists/contract-lists.component';
+import { ApprovedPipe } from './contract-lists/approved.pipe';
 
 
 
@@ -120,6 +122,8 @@ import { WareStorageComponent } from './ware-storage/ware-storage.component';
         TermsConditionComponent,
         FavoriteComponent,
         WareStorageComponent,
+        ContractListsComponent,
+        ApprovedPipe,
         
 
 
