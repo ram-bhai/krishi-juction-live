@@ -94,11 +94,6 @@ starRating = 0;
   isLoggedIn(){
     return this.userService.checkToken();
   }
-  // open_dialog(){
-  //   this.dialog.open(StorageFormComponent,{
-  //     disableClose:false
-  //   });
-  // }
 
   setdata(items:any){
     this.single_items=items;
@@ -219,7 +214,7 @@ onPay(amount:any){
        alert(data.id);
       var options = {
       "key": "rzp_test_MqoJug1nXNqVws", // Enter the Key ID generated from the Dashboard
-      "amount": amt*10, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "amount": "5000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       "currency": "INR",
       "name": "Acme Corp",
       "description": "Test Transaction",
@@ -235,7 +230,7 @@ onPay(amount:any){
           "address": "Razorpay Corporate Office"
       },
       "theme": {
-          "color": "#3399cc"
+          "color": "#bd1e51"
       }
   };
   console.log(options);

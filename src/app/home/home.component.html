@@ -151,7 +151,7 @@
                 {{'Your items weight be calculated in kilo gram'|translate}}
             </div>
             <p>Please select the item first to enter the items details</p>
-            <h3 class="total">{{'Total'|translate}} : <span class="tot">{{total |currency:"INR"}}</span></h3>
+            <h3 class="total">{{'Total'|translate}} : <span class="tot">{{storageTotal |currency:"INR"}}</span></h3>
             <mat-form-field appearance="legacy">
                 <mat-label>{{'Enter your Mobile no.'|translate}}</mat-label>
                 <input [(ngModel)]="mobile" #mob="ngModel" pattern="^(\+[\d]{1,5}|0)?[7-9]\d{9}$" required="true" matInput>
@@ -192,8 +192,7 @@
     <button class="book" (click)="save()" mat-raised-button>{{'Book Now'| translate}}</button>
 
 </div>
-
-<!-- </div> -->
+<!-- 
 
 <!-- ------------- -->
 <!-- service -->
@@ -258,8 +257,6 @@
 
 <!-- //model -->
 
-
-<!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog  modal-dialog-scrollable">
         <div class="modal-content">

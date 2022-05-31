@@ -12,7 +12,8 @@
                 Your items details
                 <div class="items" *ngFor="let items of data.items">
                     <p>Name : {{items.name}}</p>
-                    <p>Your product amount : {{items.weight}}</p>
+                    <p>Your product amount : {{items.charge}}</p>
+                    <p>Your product weight : {{items.weight}}</p>
                     <p>Start Date : {{items.bookingDate| date : 'mediumDate'}}</p>
                     <p>End Date : {{items.date| date : 'mediumDate'}}</p>
                 </div>

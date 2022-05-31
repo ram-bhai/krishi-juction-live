@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {User} from '../model/user';
 import { ContractFarming } from '../model/contract-farming';
+import { identifierName } from '@angular/compiler';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,20 +14,21 @@ export class UserService {
  //contractFarming = "https://krishi-backend.herokuapp.com/contract/contract-farming";
   // profile = 'http://localhost:3000/customer/view/';
   profile = "https://krishi-backend.herokuapp.com/customer/view/"
-  // sign_Up = 'http://localhost:3000/customer/signup';
-  sign_Up = "https://krishi-backend.herokuapp.com/customer/signup";
+  sign_Up = 'http://localhost:3000/customer/signup';
+//  sign_Up = "https://krishi-backend.herokuapp.com/customer/signup";
   signIn = "https://krishi-backend.herokuapp.com/customer/signin";
   // signIn = 'http://localhost:3000/customer/signin';
   // favorite = "http://localhost:3000/fav/favorite";
   favorite = "https://krishi-backend.herokuapp.com/fav/favorite";
-  orderApi = "https://krishi-backend.herokuapp.com/order/pay";
-  //orderApi = 'http://localhost:3000/order/pay';
+ // orderApi = "https://krishi-backend.herokuapp.com/order/pay";
+  orderApi = 'http://localhost:3000/order/pay';
 
   // edit_profile = 'http://localhost:3000/customer/edit-profile/';
   edit_profile = "https://krishi-backend.herokuapp.com/customer/edit-profile/";
 
   // view_favorite = 'http://localhost:3000/fav/view/';
   view_favorite = "https://krishi-backend.herokuapp.com/fav/view/";
+  storage_review = "http://localhost:3000/storage/review/";
 
   // search_product = "http://localhost:3000/customer/search-product";
   search_product = "https://krishi-backend.herokuapp.com/customer/search-product";
@@ -43,6 +45,14 @@ export class UserService {
     return this.http.post<any>(this.favorite,{
       tool_id:tool_id,
       user_id:user_id
+    });
+  }
+  storageReview(id:any){
+    return this.http.get<any>(this.storage_review+id);
+  }
+  storageR(id:any){
+    return this.http.post<any>(this.storage_review+id,{
+
     });
   }
   User_product(text:any){
@@ -82,7 +92,7 @@ export class UserService {
     return !!sessionStorage.getItem('token');
   }
   public createOrder(amount:any){
-    alert("called");
+  
     return this.http.post<any>(this.orderApi,{amount});
    }
  

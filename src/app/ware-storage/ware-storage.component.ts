@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../service/storage.service';
 import {MatDialog,  MatDialogConfig} from '@angular/material/dialog';
 import { StorageFormComponent } from '../storage-form/storage-form.component';
+import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router} from '@angular/router';
 import { UserService } from '../service/user.service';
+import { HttpErrorResponse } from '@angular/common/http';
 import {StorageCommentComponent} from '../storage-comment/storage-comment.component';
 import {NgbOffcanvas, OffcanvasDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 declare let Razorpay:any;
@@ -19,7 +21,10 @@ export class WareStorageComponent implements OnInit {
   starRating = 0;
   
   
-    constructor(private offcanvasService: NgbOffcanvas,public dialog:MatDialog,public storageService: StorageService,private router:Router,private userService:UserService,private activatedRoute :ActivatedRoute) {
+    constructor(private offcanvasService: NgbOffcanvas,public dialog:MatDialog,
+      public storageService: StorageService,private router:Router,
+      private userService:UserService,private activatedRoute :ActivatedRoute,
+      private notifyService:ToastrService) {
   
       this.storageService.getStorageById(this.activatedRoute.snapshot.paramMap.get('id')).subscribe(data => {
         this.storage = data;
@@ -91,11 +96,6 @@ export class WareStorageComponent implements OnInit {
     isLoggedIn(){
       return this.userService.checkToken();
     }
-    // open_dialog(){
-    //   this.dialog.open(StorageFormComponent,{
-    //     disableClose:false
-    //   });
-    // }
   
     setdata(items:any){
       this.single_items=items;
@@ -114,6 +114,7 @@ export class WareStorageComponent implements OnInit {
         this.total += calc*1*day;
       }
       console.log(this.total);
+      
     }
   
     book(){
@@ -142,8 +143,7 @@ export class WareStorageComponent implements OnInit {
       if(totalDays < 0) {
         totalDays *= -1;
       }
-      alert(totalDays);
-      this.calculate(totalDays);
+      //this.calculate(totalDays);
     }
   
     
@@ -157,20 +157,62 @@ export class WareStorageComponent implements OnInit {
       }
     }
     save(){
-       if(this.isLoggedIn()){
+      this.calculate(2);
+      if(this.isLoggedIn()){
+ 
+       console.log(this.items);
+     //  this.onPay(this.storageTotal);
+       this.storageService.bookStorage(this.single_items._id,this.total,this.items,this.mobile).subscribe(data=>{
+       
+         console.log(data);
+         this.notifyService.success("Order Booked Successfully..!!")
+ 
+       },err=>{
+        console.log(err);
+        if(err instanceof HttpErrorResponse){
+          if(err.status == 400){
+            this.notifyService.error("something happend...");
+          }
+          else if(err.status == 500){
+            this.notifyService.warning("Something is wrong..!")
+          // alert(err);
+        }
+      }
+       })
+     }
+     else{
+         this.router.navigate(['sign-in']);
+     }
+    
+   }
+    // save(){
+    //    if(this.isLoggedIn()){
   
-        console.log(this.items);
-        this.onPay(this.total);
-        this.storageService.bookStorage(this.single_items._id,this.total,this.items,this.mobile).subscribe(data=>{
-          alert("result++++"+data);
-          console.log(data);
-        })
-      }
-      else{
-          this.router.navigate(['sign-in']);
-      }
+    //     console.log(this.items);
+    //    // this.onPay(this.total);
+    //     this.storageService.bookStorage(this.single_items._id,this.total,this.items,this.mobile).subscribe(data=>{
+    //       this.notifyService.success("Successfully Register..");
+    //       this.router.navigate(['sign-in']);
+    //     }, err => {
+    
+    //       console.log(err);
+    //       if (err instanceof HttpErrorResponse) {
+    //         if (err.status == 400) {
+    //           this.notifyService.warning("Something went wrong..");
+              
+    //         }
+    //         else if (err.status == 500) {
+    //           this.notifyService.error("Something went wrong..");
+            
+    //         }
+    //       }
+    //     })
+    //   }
+    //   else{
+    //       this.router.navigate(['sign-in']);
+    //   }
      
-    }
+    // }
     openDialog(id:any): void {
       this.dialog.open(StorageCommentComponent,{data:id});
     }
@@ -204,7 +246,7 @@ export class WareStorageComponent implements OnInit {
         }
     };
     console.log(options);
-    alert("dear++++"+options);
+  
     var rzp1 = new Razorpay(options);
   
       rzp1.open()

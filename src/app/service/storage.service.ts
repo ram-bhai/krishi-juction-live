@@ -10,8 +10,8 @@ export class StorageService {
   // takeapi = "http://localhost:3000/storage/view-storage";
   // customerStorage = "http://localhost:3000/booked-storage/add/";
   customerStorage = "https://krishi-backend.herokuapp.com/booked-storage/add/";
-  // userStorage = "http://localhost:3000/booked-storage/view-booked/";
-  userStorage = "https://krishi-backend.herokuapp.com/booked-storage/view-booked/";
+   userStorage = "http://localhost:3000/booked-storage/view-booked/";
+ // userStorage = "https://krishi-backend.herokuapp.com/booked-storage/view-booked/";
   storagebyId = "https://krishi-backend.herokuapp.com/storage/view-storage/";
   // storagebyId = "http://localhost:3000/storage/view-storage/"
   // review = "http://localhost:3000/storage/review/";

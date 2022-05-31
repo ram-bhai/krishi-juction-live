@@ -160,7 +160,7 @@ export class HomeComponent implements OnInit {
 
   storage:any;
 
-
+  storageTotal:any;
   mobile:any;
 
   serviced:any;
@@ -239,7 +239,7 @@ export class HomeComponent implements OnInit {
   saved(){
     
     if(this.isLoggedIn()){
-    //  this.onPay(this.total);
+    this.onPay(this.total);
       this.orderList = [{bookingDate:this.bookingDate,tool_id:this.tid}];
 
       this.service.userId = this.id;
@@ -315,7 +315,8 @@ export class HomeComponent implements OnInit {
   public checkWeighted(event:any){
     
     if(event.target.value){
-      this.total = this.price  * event.target.value*1;
+      this.storageTotal = this.price  * event.target.value*1;
+      alert(this.storageTotal);
       this.service.duration = event.target.value;
     }
   }
@@ -332,8 +333,8 @@ export class HomeComponent implements OnInit {
      if(this.isLoggedIn()){
 
       console.log(this.items);
-      this.onPay(this.total);
-      this.storageService.bookStorage(this.single_items._id,this.total,this.items,this.mobile).subscribe(data=>{
+      this.onPay(this.storageTotal);
+      this.storageService.bookStorage(this.single_items._id,this.storageTotal,this.items,this.mobile).subscribe(data=>{
       
         console.log(data);
         this.notifyService.success("Order Booked Successfully..!!")
@@ -369,7 +370,7 @@ onPay(amount:any){
     
       var options = {
       "key": "rzp_test_MqoJug1nXNqVws", // Enter the Key ID generated from the Dashboard
-      "amount": amt*10, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "amount": "1", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       "currency": "INR",
       "name": "Acme Corp",
       "description": "Test Transaction",
@@ -391,7 +392,7 @@ onPay(amount:any){
   console.log(options);
 
   var rzp1 = new Razorpay(options);
-
+   alert("razorpay");
     rzp1.open()
       
     })
