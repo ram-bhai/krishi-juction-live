@@ -1,20 +1,31 @@
-<h1 class="user">Welcome {{products[0].userId.name}}</h1>
-
+<h1 class="user">Welcome</h1>
+<!-- {{products[0].userId.name}} -->
 <div style="width:95%;margin:auto;">
     <table class="table">
         <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Date</th>
-            <th scope="col">Total items</th>
-        </tr>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Items</th>
+                <th scope="col">Items Weight</th>
+                <th scope="col">Items Quantity</th>
+                <th scope="col">Total</th>
+            </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let product of products" style="cursor: pointer;" (click)="openDialog(product)">
-            <td>{{product.storage_id.name}}</td>
-            <td>{{product.date | date:'mediumDate'}}</td>
-            <td>{{product.items.length}}</td>
-        </tr>
+            <tr *ngFor="let product of products" style="cursor: poisnter;" (click)="openDialog(product)">
+                <td>{{product.storage_id.name}}</td>
+                <td>{{product.date | date:'mediumDate'}}</td>
+                <td>
+                    <tr *ngFor="let item1 of product.items">{{item1.name}}</tr>
+                </td>
+                <td>
+                    <tr *ngFor="let item1 of product.items">{{item1.weight}}</tr>
+                </td>
+                <!-- <td *ngFor="let item1 of product.items">{{product.item1.name}}</td> -->
+                <td>{{product.items.length}}</td>
+                <td>{{product.items.total}}</td>
+            </tr>
         </tbody>
     </table>
 </div>

@@ -16,7 +16,7 @@ import { TokenService } from '../token.service';
 export class Registration2Component implements OnInit {
 
 
-  constructor(private userService: UserService, private router: Router, private toster: ToastrService) { }
+  constructor(private userService: UserService, private router: Router, private notifyService: ToastrService) { }
 
   ngOnInit(): void {
     function matchPassword() {  
@@ -37,22 +37,19 @@ export class Registration2Component implements OnInit {
 
     this.userService.User_Signup(this.user).subscribe(data => {
       console.log(data);
-    
+      this.notifyService.success("Successfully Register..");
       this.router.navigate(['sign-in']);
-    // },err=>{
-
-
-      this.router.navigate(['signin']);
     }, err => {
 
       console.log(err);
       if (err instanceof HttpErrorResponse) {
-        if (err.status == 401) {
-          alert(err);
+        if (err.status == 400) {
+          this.notifyService.warning("Something went wrong..");
+          
         }
         else if (err.status == 500) {
-
-          alert(err);
+          this.notifyService.error("Something went wrong..");
+        
         }
       }
     }

@@ -30,18 +30,20 @@
         </div>
     </div>
 </div>
-
+<input type="text" [(ngModel)]="feedback" class="">
+<button (click)="comment()">Save</button>
 <p>
     <a class="btn btn-warning ms-5 p-2" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
         comments
     </a>
 
 </p>
+
 <div class="collapse" id="collapseExample">
     <div class="card card-body p-5">
-        <div>
-            <p>Devika Kushwah</p>
-            <p>It Has a good quality of storage .I am satisfied with this storage services.</p>
+        <div *ngFor="let review of details[0].reviews ">
+            <p>{{review.feedback}}</p>
+
             <hr class='mt-3'>
         </div>
     </div>

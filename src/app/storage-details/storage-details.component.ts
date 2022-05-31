@@ -29,15 +29,22 @@ export class StorageDetailsComponent implements OnInit {
   details:any;
   userId:any;
   user:any;
+  feedback:any;
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log(this.id);
    this.adminService.storage_Details(this.id).subscribe(data=>{
      this.userId = sessionStorage.getItem('id')
      this.details = data;
-     console.log(data);
-     console.log(this.details[0].items[0].name);
      
-   })
+     console.log(this.details[0].items[0].name);
+     console.log(this.details[0].reviews[0].feedback)
+   });
+  //  this.userService.storageReview(this.id).subscribe(data=>{
+  //       alert(data);
+  //       console.log(data);
+  //  })
+   
    
   }
   bookService(picker:any,name:any,email:any,mobile:any,address:any){
@@ -51,6 +58,12 @@ export class StorageDetailsComponent implements OnInit {
        console.log(result);
      })
 
+  }
+  comment(){
+    this.userService.storageR(this.id).subscribe(data=>{
+       alert(data);
+       console.log(data);
+    })
   }
   storage:any;
 
