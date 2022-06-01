@@ -5,6 +5,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { ConfirmComponent } from '../confirm/confirm.component';
 import {Location} from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
 declare var webkitSpeechRecognition:any;
 @Component({
   selector: 'app-navbar4',
@@ -15,7 +16,7 @@ export class Navbar4Component implements OnInit {
   event$:any;
   search:any;
   constructor(private _location: Location,private userService: UserService,
-    private router: Router,public dialog: MatDialog,private ac : ActivatedRoute,public translate: TranslateService) {
+    private router: Router,public dialog: MatDialog,private ac : ActivatedRoute,public translate: TranslateService,public toster:ToastrService) {
     translate.addLangs(['hi', 'en']);
     translate.setDefaultLang('en');
     
@@ -101,12 +102,10 @@ export class Navbar4Component implements OnInit {
       vSearch.onresult = async (e:any) =>{
         this.search = await e.results[0][0].transcript;
         console.log(this.search);
-        this.router.navigate(['',this.search]).then(()=>{
+        this.router.navigate(['search',this.search]).then(()=>{
           location.reload();
         });
-        // location.reload();
-        vSearch.stop();
-        
+        vSearch.stop();        
       }
       vSearch.onerror = function(e:any){
         console.log(e);
@@ -114,6 +113,7 @@ export class Navbar4Component implements OnInit {
       }
     }
     else{
+      this.toster.warning('Not Avaliable');
       console.log("Your browser dosen't support speech recognition");
     }
    }
