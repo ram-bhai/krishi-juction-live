@@ -5,7 +5,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { ConfirmComponent } from '../confirm/confirm.component';
 import {Location} from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
-
+declare var webkitSpeechRecognition:any;
 @Component({
   selector: 'app-navbar4',
   templateUrl: './navbar4.component.html',
@@ -13,6 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class Navbar4Component implements OnInit {
   event$:any;
+  search:any;
   constructor(private _location: Location,private userService: UserService,
     private router: Router,public dialog: MatDialog,private ac : ActivatedRoute,public translate: TranslateService) {
     translate.addLangs(['hi', 'en']);
@@ -88,4 +89,32 @@ export class Navbar4Component implements OnInit {
       this.router.navigate(['sign-in']);
     }
   }
+
+  voice(){
+    if("webkitSpeechRecognition" in window){
+        
+      let vSearch = new webkitSpeechRecognition();
+      vSearch.lang = "en-US";
+      // vSearch.lang ="hi-HI"
+      vSearch.start();
+  
+      vSearch.onresult = async (e:any) =>{
+        this.search = await e.results[0][0].transcript;
+        console.log(this.search);
+        this.router.navigate(['',this.search]).then(()=>{
+          location.reload();
+        });
+        // location.reload();
+        vSearch.stop();
+        
+      }
+      vSearch.onerror = function(e:any){
+        console.log(e);
+        vSearch.stop();
+      }
+    }
+    else{
+      console.log("Your browser dosen't support speech recognition");
+    }
+   }
 }

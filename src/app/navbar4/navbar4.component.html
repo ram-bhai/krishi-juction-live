@@ -69,10 +69,11 @@
                 <div class="searchToggle" [class.active]="appear" (click)="toggle()">
                     <i class="fa-solid fa-x cancel"></i>
                     <i class="fa-solid fa-magnifying-glass search"></i>
+
                 </div>
                 <div class="search_field" [class.active]="appear">
                     <input (keyup)="dataCalled()" [(ngModel)]="data" type="text" placeholder="Search..." autocomplete="off">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-solid fa-microphone" (click)="voice()"></i>
                 </div>
             </div>
 
