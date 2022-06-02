@@ -4,7 +4,7 @@
         <div class="card-body">
             <h5 class="card-title">{{country.name}}</h5>
             <p class="card-text">{{country.storage_description}}</p>
-            <a href="#" (click)="showStorage(country._id)" class="btn btn-warning">View More</a>
+            <a href="#" (click)="showStorage(country._id)" class="btn btn-warning">{{'View More'|translate}}</a>
         </div>
     </div>
 
@@ -13,7 +13,7 @@
         <div class="card-body">
             <h5 class="card-title">{{country.name}}</h5>
             <p class="card-text">{{country.description}}</p>
-            <a (click)="showService(country._id)" class="btn btn-warning">View More</a>
+            <a (click)="showService(country._id)" class="btn btn-warning">{{'View More'|translate}}</a>
         </div>
     </div>
 </div>
