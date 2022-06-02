@@ -5,17 +5,17 @@
         </div>
         <div class="box_content">
             <h1>{{details.name}}</h1><br>
-            <p>Rent Charges : {{details.charges}}</p>
-            <p>Description: {{details.description}}</p>
-            <p>Travelling Charge:{{details.travellingcharges}}</p>
-            <button class="book" mat-raised-button (click)="setData(details._id,details.charges,details.name)" (click)="open(content)">Book Now</button>
+            <p>{{'Rent Charges'|translate }} : {{details.charges}}</p>
+            <p>{{'Description'|translate}}: {{details.description}}</p>
+            <p>{{'Travelling Charge'|translate}}: {{details.travellingcharges}}</p>
+            <button class="book" mat-raised-button (click)="setData(details._id,details.charges,details.name)" (click)="open(content)">{{'Book Now'|translate}}</button>
         </div>
     </div>
 </div>
 
 <p>
     <a class="btn btn-warning ms-5 p-2" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        comments
+        {{'comments'|translate}}
     </a>
 
 </p>
@@ -32,7 +32,7 @@
 
 <ng-template #content let-offcanvas>
     <div class="offcanvas-header">
-        <h4 class="offcanvas-title" id="offcanvas-basic-title">>Welcome to {{username}}</h4>
+        <h4 class="offcanvas-title" id="offcanvas-basic-title">{{'Welcome to:'|translate'}} {{username}}</h4>
         <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
     </div>
     <div class="offcanvas-body">
