@@ -80,6 +80,9 @@
     "INTEGRITY": "INTEGRITY",
     "CUSTOMER CENTRICITY": "CUSTOMER CENTRICITY",
     "SUSTANIBILITY": "SUSTANIBILITY",
-    "QUALITY": "QUALITY"
+    "QUALITY": "QUALITY",
+    "Rent Charges":"Rent Charges",
+    "Travelling Charge":"Travelling Charge",
+    "comments":"comments"
 
 }

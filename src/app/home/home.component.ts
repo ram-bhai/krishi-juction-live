@@ -360,6 +360,49 @@ export class HomeComponent implements OnInit {
   openDialog(id:any): void {
     this.dialog.open(StorageCommentComponent,{data:id});
   }
+
+
+
+  title = 'payment';
+  onPay(amount:any){
+   if(this.isLoggedIn()){
+    this.userService.createOrder(amount).subscribe(data=>{
+      console.log(data.id);
+      console.log(data);
+      
+      var options = {
+        
+       "key": "rzp_test_MqoJug1nXNqVws", // Enter the Key ID generated from the Dashboard
+       "amount": "10000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+       "currency": "INR",
+       "name": "Acme Corp",
+       "description": "Test Transaction",
+       "image": "https://example.com/your_logo",
+       "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+       "callback_url": "http://localhost:3000/order/payment-status",
+       "prefill": {
+           "name": "Devika Kushwah",
+           "email": "devikakushwah29@gmail.com",
+           "contact": "8770784399"
+       },
+       "notes": {
+           "address": "Razorpay Corporate Office"
+       },
+       "theme": {
+           "color": "#3399cc"
+       }
+   };
+   
+   var rzp1 = new Razorpay(options);
+ 
+     rzp1.open();
+    })
+   }
+   else{
+     alert("First login required");
+     this.router.navigate(['signIn']);
+   }
+  }
   
 //   title = 'payment';
 // onPay(amount:any){
@@ -398,7 +441,6 @@ export class HomeComponent implements OnInit {
 //     })
 //   }
 // }
-
 
 trackByIndex(index: number, obj: any): any {
   return index;
