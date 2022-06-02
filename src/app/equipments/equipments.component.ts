@@ -100,6 +100,7 @@ export class EquipmentsComponent implements OnInit {
       this.price = price;
       this.name = name;
       this.total = price;
+      //dbcndbcndb
   }
    
   title = 'payment';
