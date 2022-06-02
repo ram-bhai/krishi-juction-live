@@ -100,49 +100,92 @@ export class EquipmentsComponent implements OnInit {
       this.price = price;
       this.name = name;
       this.total = price;
+      //dbcndbcndb
   }
+   
+  title = 'payment';
+  onPay(amount:any){
+   if(this.isLoggedIn()){
+    this.userService.createOrder(amount).subscribe(data=>{
+      console.log(data.id);
+      console.log(data);
+      
+      var options = {
+        
+       "key": "rzp_test_MqoJug1nXNqVws", // Enter the Key ID generated from the Dashboard
+       "amount": "10000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+       "currency": "INR",
+       "name": "Acme Corp",
+       "description": "Test Transaction",
+       "image": "https://example.com/your_logo",
+       "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+       "callback_url": "http://localhost:3000/order/payment-status",
+       "prefill": {
+           "name": "Devika Kushwah",
+           "email": "devikakushwah29@gmail.com",
+           "contact": "8770784399"
+       },
+       "notes": {
+           "address": "Razorpay Corporate Office"
+       },
+       "theme": {
+           "color": "#3399cc"
+       }
+   };
+   
+   var rzp1 = new Razorpay(options);
+ 
+     rzp1.open();
+    })
+   }
+   else{
+     alert("First login required");
+     this.router.navigate(['signIn']);
+   }
+  }
+ 
   service_item(id:any){
         this.router.navigate(['equipment-details',id]);
   }
   
  
   
-  title = 'payment';
-onPay(amount:any){
-  var amt = parseInt(amount);
+//   title = 'payment';
+// onPay(amount:any){
+//   var amt = parseInt(amount);
 
-  if(this.isLoggedIn()){
-  this.userService.createOrder(amount).subscribe(data=>{
-      console.log(data);
-      var options = {
-      "key": "rzp_test_MqoJug1nXNqVws", // Enter the Key ID generated from the Dashboard
-      "amount":"1", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-      "currency": "INR",
-      "name": "Acme Corp",
-      "description": "Test Transaction",
-      "image": "https://example.com/your_logo",
-      "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      "callback_url": "http://localhost:3000/order/payment-status",
-      "prefill": {
-          "name": "Devika Kushwah",
-          "email": "devikakushwah29@gmail.com",
-          "contact": "8770784399"
-      },
-      "notes": {
-          "address": "Razorpay Corporate Office"
-      },
-      "theme": {
-          "color": "#3399cc"
-      }
-  };
-  console.log(options);
-  var rzp1 = new Razorpay(options);
+//   if(this.isLoggedIn()){
+//   this.userService.createOrder(amount).subscribe(data=>{
+//       console.log(data);
+//       var options = {
+//       "key": "rzp_test_MqoJug1nXNqVws", // Enter the Key ID generated from the Dashboard
+//       "amount":"1", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+//       "currency": "INR",
+//       "name": "Acme Corp",
+//       "description": "Test Transaction",
+//       "image": "https://example.com/your_logo",
+//       "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+//       "callback_url": "http://localhost:3000/order/payment-status",
+//       "prefill": {
+//           "name": "Devika Kushwah",
+//           "email": "devikakushwah29@gmail.com",
+//           "contact": "8770784399"
+//       },
+//       "notes": {
+//           "address": "Razorpay Corporate Office"
+//       },
+//       "theme": {
+//           "color": "#3399cc"
+//       }
+//   };
+//   console.log(options);
+//   var rzp1 = new Razorpay(options);
 
-    rzp1.open()
+//     rzp1.open()
       
-    })
-  }
-}
+//     })
+//   }
+// }
   favorite(tool_id:any){
     const user_id = sessionStorage.getItem("id");
     this.userService.User_favorite(tool_id,user_id).subscribe(data=>{
