@@ -400,12 +400,11 @@ trackByIndex(index: number, obj: any): any {
      rzp1.open();
     })
    }
+   
    else{
      alert("First login required");
      this.router.navigate(['signIn']);
    }
-  }
- 
-  
+  } 
 }
 
