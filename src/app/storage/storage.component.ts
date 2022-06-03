@@ -146,7 +146,8 @@ starRating = 0;
       bookingDate:bookingDate,
       duration:endDate,
       weight:weight,
-      kg:item.weight
+      // kg:item.weight
+      kg:50
     }
     this.items.push(temp);
     var date1 = new Date(bookingDate);
@@ -286,7 +287,7 @@ starRating = 0;
 // }
 
 trackByIndex(index: number, obj: any): any {
-  console.log(obj);
+  // console.log(obj);
   return index;
 }
 
