@@ -298,7 +298,8 @@ export class HomeComponent implements OnInit {
       bookingDate:bookingDate,
       endDate:endDate,
       weight:weight,
-      kg:item.weight
+      // kg:item.weight
+      kg:50
     }
     this.items.push(temp);
     var date1 = new Date(bookingDate);
