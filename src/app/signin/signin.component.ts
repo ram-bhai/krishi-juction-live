@@ -33,11 +33,11 @@ export class SigninComponent implements OnInit {
       this.email = data.email;
       this.provider = data.provider
       console.log(data);
+      
       this.userService.User_google(this.name,this.email).subscribe(data=>{
         this.notifyService.success("Sing In Successfully..!!")
         sessionStorage.setItem("token",data.token);
         sessionStorage.setItem("name",data.user.name)
-        console.log()
         console.log(data);
         console.log("hellow admin" + this.socialUser);
         sessionStorage.setItem("id",data.user._id); 
@@ -46,6 +46,7 @@ export class SigninComponent implements OnInit {
         console.log(err);
         if(err instanceof HttpErrorResponse){
           if(err.status == 400){
+            console.log(err);
             this.notifyService.error("user already exists...");
           }
           else if(err.status == 500){
