@@ -9,12 +9,28 @@ import { UserService } from '../service/user.service';
   styleUrls: ['./contract-farming.component.css']
 })
 export class ContractFarmingComponent implements OnInit {
+  Im:any=true;
+  check2:any=false;
+  are:any=true;
  contractFarming: ContractFarming = new ContractFarming("","","","","","","","","");
   constructor(private userService: UserService,  private notifyService:ToastrService) { }
-
+  checkf(){
+    if(this.check2==true)
+    this.check2=false;
+    else
+    this.check2=true;
+  }
+  areacheck(){
+    if(this.contractFarming.area>=43560){
+      this.are=false;
+    }
+      else
+      this.are=true;
+    }
   selectImage(event:any){
     if(event.target.files.length>0){
       this.contractFarming.image = event.target.files[0];
+      this.Im=false;
       console.log(this.contractFarming.image);
     }
   }

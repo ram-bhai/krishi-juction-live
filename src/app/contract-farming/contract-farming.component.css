@@ -4,10 +4,9 @@
     --purple: #490b3d;
 }
 
-
-.details_card{
-  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
-  margin:auto;
+.details_card {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: auto;
 }
 
 .details {
@@ -34,9 +33,6 @@ mat-form-field {
     font-size: 18px;
 }
 
-
 .details button:hover {
     box-shadow: 5px 5px 2px -4px rgba(0, 0, 0, 0.2), 5px 4px 5px 0px rgba(0, 0, 0, 0.14), 5px 3px 5px 5px rgba(0, 0, 0, 0.12);
-input{
-  font-size:18px;
 }
