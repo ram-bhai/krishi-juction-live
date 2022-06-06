@@ -40,6 +40,7 @@
                     <input #email="ngModel" [(ngModel)]="contractFarming.email" pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}" type="text" matInput required="true">
                     <mat-hint *ngIf="!email.invalid && (email.dirty || email.touched) && email.errors?.['pattern']" class="danger">adada</mat-hint>
                     <mat-hint *ngIf="email.errors?.['required']">{{'Email is Required.'|translate}}</mat-hint>
+                    <mat-hint *ngIf="email.errors?.['pattern']">{{'Email is Invalid.'|translate}}</mat-hint>
 
                 </mat-form-field>
 
@@ -84,7 +85,7 @@
                     <mat-label>{{'Enter your description here'|translate}}</mat-label>
                     <textarea [(ngModel)]="contractFarming.description" matInput></textarea>
                 </mat-form-field>
-                <button mat-raised-button (click)="save()">{{'Send Request'|translate}}</button>
+                <button mat-raised-button [disabled]="email.errors?.['pattern']||date.errors?.['required']||area.errors?.['required']||add.errors?.['required']||mob.errors?.['required']||name.errors?.['required']||email.errors?.['required']" (click)="save()">{{'Send Request'|translate}}</button>
             </div>
         </div>
     </div>
