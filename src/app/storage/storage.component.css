@@ -39,20 +39,23 @@
     line-height: 35px;
 }
 
-button{
-    padding:5px;
-    border-radius: 10px;
-    color:var(--pink);
-    background-color:white;
-    font-size:20px;
+button ,a {
+    font-size:18px;
 }
 
 button:disabled{
     opacity:0.5;
 }
 
-.fruit span+span{
-    margin:10px;
+.fruit{
+    font-size:18px;
+    color:green;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.fruit+.fruit{
+    margin:15px;
 }
 
 .items{
@@ -79,7 +82,7 @@ mat-checkbox{
 }
 
 .cards2:hover{
-    box-shadow: 2px 2px 12px rgba(0,0,0,0.5);
+    border:1px solid var(--pink);
 }
 
 .left2_img{
@@ -110,14 +113,13 @@ mat-checkbox{
 .cards2 .book_now{
     background-color: var(--pink);
     margin-right:10px;
-    border:none;
-    padding:5px;
-    font-size:20px;
+    padding:0 16px;
+    font-size:18px;
     color:white;
-    border-radius:10px;
+    /* border-radius:10px; */
 }
 
-.cards2 .view_more{
+/* .cards2 .view_more{
     background-color: white;
     margin-right: 27px;
     border: none;
@@ -126,7 +128,7 @@ mat-checkbox{
     color: var(--orange);
     border-radius: 10px;
     border: 2px solid var(--orange);
-}
+} */
 
 .cards2 h3{
     margin-top:10px;

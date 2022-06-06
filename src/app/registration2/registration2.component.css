@@ -41,16 +41,19 @@
     font-size:20px;
   } */
 
-  .login_card .register{
-    padding:10px;
-    border-radius:10px;
-    border:none;
-    font-size:24px;
+  .register{
+    padding:0 16px;
+    font-size:20px;
     width:fit-content;
     background-color: var(--pink);
     color: white;
+    margin:auto;
   }
 
   .login_card .register:hover{
     box-shadow: 5px 5px 12px rgba(0,0,0,0.5);
+  }
+
+  input{
+    font-size:18px;
   }
