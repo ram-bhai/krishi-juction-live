@@ -14,25 +14,25 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .owl-next{
-  right:-30px !important;
+  right:-70px !important;
   box-shadow: -2px -2px 1px rgb(0 0 0 / 50%);
 }
 
 .owl-prev{
-  left:-30px !important;
+  left:-70px !important;
   box-shadow: 2px 2px 1px rgb(0 0 0 / 50%);
 }
 
 .owl-next,.owl-prev{
   position:absolute!important;
-  top:50%;
+  top:40%;
   transform:translateY(-50%);
 }
 
 .owl-theme .owl-nav  [class*=owl-]{
     font-size: 20px;
     color: black;
-    padding: 17px;
+    padding: 17px 20px;
     border-radius: 50%;
     background-color: white;
 }

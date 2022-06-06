@@ -141,7 +141,7 @@ export class HomeComponent implements OnInit {
         items: 1
       },
       400: {
-        items: 2.5
+        items: 1.2
       },
       740: {
         items: 2.5
