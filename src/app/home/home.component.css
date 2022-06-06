@@ -20,7 +20,7 @@
     position: relative;
 }
 
-.banner {
+/* .banner {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/img/cold_storage3.jpg');
     width: 100%;
     height: 350px;
@@ -29,9 +29,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+} */
 
-.banner h1 {
+/* .banner h1 {
     font-size: 28px;
     font-weight: bold;
     color: #FEFFED;
@@ -41,7 +41,7 @@
     font-size: 24px;
     color: #FEFFED;
     text-align: center;
-}
+} */
 
 /* button {
     padding: 5px;
@@ -254,12 +254,12 @@ button:hover {
     --purple: #490b3d;
 }
 
-button {
+/* button {
     border: none;
     padding: 5px;
     font-size: 20px;
     border-radius: 10px;
-}
+} */
 
 .head {
     display: flex;
@@ -277,6 +277,7 @@ button:hover {
     height: 85vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/img/banner12.jpg');
     background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -285,9 +286,12 @@ button:hover {
 }
 
 .wrap p {
-    font-size: 24px;
+    font-size: 50px;
     color:white;
-    font-family: italic;;
+    font-family: italic;
+    line-height: 1.5em;
+    margin-bottom:5px;
+    text-align:center;
 }
 
 .heading {
@@ -324,18 +328,18 @@ button:hover {
     margin: 5px 0;
 }
 
-.img_part {
+/* .img_part {
     position: relative;
     width: 300px;
     height: 240px;
-}
+} */
 
-.img_part img {
+/* .img_part img {
     width: 100%;
     height: 100%;
-}
+} */
 
-.img_part .overlay {
+/* .img_part .overlay {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -347,40 +351,41 @@ button:hover {
     justify-content: center;
     align-items: center;
     transition: all 0.5s cubic-bezier(0.72, -0.07, 0, 1.37);
-}
+} */
 
-.service_card:hover .overlay {
+/* .service_card:hover .overlay {
     top: 50%;
 }
 
 .img_part .overlay button {
     margin: 0px 10px;
-}
+} */
 
-.content {
+/* .content {
     padding: 10px;
-}
+} */
 
-.content h3 {
+/* .content h3 {
     margin: 0;
     padding: 0;
     font-size: 18px;
     font-weight: bold;
-}
+} */
 
-.content p {
+/* .content p {
     margin: 0;
     padding: 0;
     font-size: 18px;
     color: gray;
-}
+} */
 
 .storage_card {
     padding: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
-    margin: 10px 0;
+    margin: 10px 10px;
     position: relative;
+    width:350px;
 }
 
 .storage_card h3 {
@@ -397,6 +402,11 @@ button:hover {
 .storage_card button {
     font-size: 18px;
     margin: 10px;
+}
+
+button,a {
+    font-size: 18px;
+    /* margin: 10px; */
 }
 
 .storage_card .button {

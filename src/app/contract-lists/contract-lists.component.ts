@@ -18,5 +18,10 @@ export class ContractListsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  list:any='';
   public approvedList:any[]=[];
+
+  getDetail(list:any){
+    this.list = list;
+  }
 }
