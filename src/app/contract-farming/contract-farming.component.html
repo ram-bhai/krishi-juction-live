@@ -1,36 +1,6 @@
 <div class="container details_card">
-
     <div class="row shadow-lg">
-
-    <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12">
-            <h1 class="text-center">{{'Terms and conditions'|translate}}</h1>
-            <hr>
-            <ul>
-                <li>
-                    {{'You should be the owner of the land.' |translate}}
-                </li>
-                <li>
-                    {{'Farm should not barren.' |translate}}
-                </li>
-                <li>
-                    {{'There shoud be a facility of water supply.'|translate}}
-                </li>
-                <li>
-                    {{'The area of ​​the farm or land should be at least 1 acre or 43560 square feet.'|translate}}
-                </li>
-                <li>
-                    {{'The duration of ​​the contract should be at least 6 months or 180 days.'|translate}}
-                </li>
-                <li>
-                    {{'After contract you cannot take land before time period.'| translate}}
-                </li>
-                <li>
-                    {{ "We pay 50% amount at the time of contract remaining amount will be paid till last date."|translate}}
-                </li>
-            </ul>
-        </div>
-
+       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="details">
                 <mat-form-field appearance="legacy">
@@ -93,22 +63,13 @@
                     <mat-label>{{'Enter your description here'|translate}}</mat-label>
                     <textarea [(ngModel)]="contractFarming.description" matInput></textarea>
                 </mat-form-field>
-
-                <button mat-raised-button [disabled]="email.errors?.['pattern']||date.errors?.['required']||area.errors?.['required']||add.errors?.['required']||mob.errors?.['required']||name.errors?.['required']||email.errors?.['required']" (click)="save()">{{'Send Request'|translate}}</button>
-
                 <mat-checkbox class="example-margin mb-3"><a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">{{'I agree with terms and conditions'|translate}}</a>
                 </mat-checkbox>
-                <button mat-raised-button (click)="save()">{{'Send Request'|translate}}</button>
+                <button mat-raised-button [disabled]="email.errors?.['pattern']||date.errors?.['required']||area.errors?.['required']||add.errors?.['required']||mob.errors?.['required']||name.errors?.['required']||email.errors?.['required']" (click)="save()">{{'Send Request'|translate}}</button>
             </div>
         </div>
     </div>
 </div>
-
-
-<!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-  </button> -->
   
   <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -139,8 +100,7 @@
                         {{ "we pay 50% amount at the time of contract remaining amount will be paid till last date."|translate}}
                     </li>
                 </ul>
-            </div>
-            
+            </div>    
         </div>
     </div>
 </div>

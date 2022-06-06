@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
   orderList:any=[];
   total:any;
   address:any;
- id:any= sessionStorage.getItem("id");
+  id:any= sessionStorage.getItem("id");
   tid:any;
   price:any;
   name:any;
