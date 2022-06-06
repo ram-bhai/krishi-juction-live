@@ -5,7 +5,6 @@ import { Router } from '@angular/router'
 import { HttpErrorResponse } from '@angular/common/http';
 import { UserService } from '../service/user.service';
 import { ToastrService } from 'ngx-toastr';
-import { TokenService } from '../token.service';
 
 
 @Component({

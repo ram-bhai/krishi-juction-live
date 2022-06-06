@@ -1,10 +1,10 @@
 
 <div class="container">
-    <div class="row mt-5 shadow-sm">
+    <div class="row mt-5 shadow-lg">
         <div class="col-12">
             <div class=" card login_card  border-0">
                 <h1>{{'Registration Form'|translate}}</h1>
-                    <hr>
+                    
                     <!-- //gfcgcvxcvhe -->
             </div>
         </div>
@@ -36,6 +36,8 @@
                 <mat-label>{{'Enter your occupation'|translate}}</mat-label>
                 <input [(ngModel)]="user.occupation" #occupation="ngModel" matInput>
             </mat-form-field>
+
+            <mat-checkbox class="example-margin">{{'I agree with terms and conditions'|translate}}</mat-checkbox>
             </div>
         </div>
 
@@ -49,11 +51,11 @@
     
                 <mat-form-field appearance="legacy">
                     <mat-label>{{'Enter your password'|translate}}</mat-label>
-                    <input [(ngModel)]="user.password" #pass="ngModel" required minlength="6" pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" matInput [type]="hide ? 'password' : 'text'">
+                    <input [(ngModel)]="user.password" #pass="ngModel" required minlength="6" pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" matInput [type]="hide2 ? 'password' : 'text'">
                     <mat-hint *ngIf="pass.errors?.['pattern']" class="danger">{{'A password must be six characters including one uppercase letter, one special character and alphanumeric characters.'|translate}}</mat-hint>  
                     <mat-hint *ngIf="pass.errors?.['required']">{{'Password is required.'|translate}}</mat-hint>
                     <div *ngIf="pass.errors?.['minlength']"></div>
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon style="margin-right: 10px;font-size:21px">{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
                 </mat-form-field>
@@ -66,10 +68,11 @@
                     <mat-hint *ngIf=""></mat-hint>
                     </button>
                 </mat-form-field>
-                <mat-checkbox class="example-margin">{{'I agree with terms and conditions'|translate}}</mat-checkbox>
-                <button (click)="register()" onclick="matchPassword()" class="mt-5 register">{{'Register'|translate}}</button>
+                
+                
             </div>      
         </div>
+        <button (click)="register()" mat-raised-button onclick="matchPassword()" class="mt-5 mb-5 register">{{'Register'|translate}}</button>
     </div>
 </div>
 
