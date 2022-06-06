@@ -1,5 +1,36 @@
 <div class="container details_card">
+
     <div class="row shadow-lg">
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <h1 class="text-center">{{'Terms and conditions'|translate}}</h1>
+            <hr>
+            <ul>
+                <li>
+                    {{'You should be the owner of the land.' |translate}}
+                </li>
+                <li>
+                    {{'Farm should not barren.' |translate}}
+                </li>
+                <li>
+                    {{'There shoud be a facility of water supply.'|translate}}
+                </li>
+                <li>
+                    {{'The area of ​​the farm or land should be at least 1 acre or 43560 square feet.'|translate}}
+                </li>
+                <li>
+                    {{'The duration of ​​the contract should be at least 6 months or 180 days.'|translate}}
+                </li>
+                <li>
+                    {{'After contract you cannot take land before time period.'| translate}}
+                </li>
+                <li>
+                    {{ "We pay 50% amount at the time of contract remaining amount will be paid till last date."|translate}}
+                </li>
+            </ul>
+        </div>
+
         <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="details">
                 <mat-form-field appearance="legacy">
@@ -41,7 +72,7 @@
                 </mat-form-field>
 
                 <div class="form-group mt-3 ms-1">
-                    <label for="" class="form-label">Enter your land image</label>
+                    <label for="" class="form-label">{{'Please select a picture of your farm.'|translate}}</label>
                     <input type="file" class='images' name="image" (change)="selectImage($event)">
                 </div>
 
