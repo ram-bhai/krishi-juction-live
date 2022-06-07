@@ -27,6 +27,11 @@ export class ContractFarmingComponent implements OnInit {
       else
       this.are=true;
     }
+  id:any= sessionStorage.getItem("id");
+ contractFarming: ContractFarming = new ContractFarming("","","","","","","","","");
+  constructor(private userService: UserService,  private notifyService:ToastrService , public router :Router) { }
+  
+
   selectImage(event:any){
     if(event.target.files.length>0){
       this.contractFarming.image = event.target.files[0];
@@ -37,6 +42,7 @@ export class ContractFarmingComponent implements OnInit {
   
 
   public save(){
+    if(sessionStorage.getItem('id')){
     const formData = new FormData();
     formData.append("name",this.contractFarming.name);
     formData.append("email",this.contractFarming.email);
@@ -55,6 +61,11 @@ export class ContractFarmingComponent implements OnInit {
       this.notifyService.error("Request aborted..!!")
      
     })
+  }
+    else{
+      this.notifyService.error("First SingIn...!")
+      this.router.navigate(['sign-in']);
+    }
   }
 
   ngOnInit(): void {

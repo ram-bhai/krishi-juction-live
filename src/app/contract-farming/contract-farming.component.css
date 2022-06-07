@@ -36,3 +36,7 @@ mat-form-field {
 .details button:hover {
     box-shadow: 5px 5px 2px -4px rgba(0, 0, 0, 0.2), 5px 4px 5px 0px rgba(0, 0, 0, 0.14), 5px 3px 5px 5px rgba(0, 0, 0, 0.12);
 }
+
+input{
+  font-size:18px;
+}
