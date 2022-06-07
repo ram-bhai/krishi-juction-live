@@ -4,11 +4,11 @@
             <img src="{{details.images}}" alt="">
         </div>
         <div class="box_content">
-            <h1>{{details.name}}</h1><br>
-            <p>{{'Rent Charges'|translate }} : {{details.charges}}</p>
-            <p>{{'Description'|translate}}: {{details.description}}</p>
-            <p>{{'Travelling Charge'|translate}}: {{details.travellingcharges}}</p>
-            <button class="book" mat-raised-button (click)="setData(details._id,details.charges,details.name)" (click)="open(content)">{{'Book Now'|translate}}</button>
+            <h1 class="mt-5">{{details.name | uppercase}}</h1>
+            <p class="mt-4" style="color:green;font-size:28px;font-weight:bold;">{{'Rent Charges'|translate }} : {{details.charges|currency:'INR'}}/acre</p>
+            <p class="mt-4">{{'Description'|translate}}: {{details.description}}</p>
+            <p class="mt-4">{{'Travelling Charge'|translate}}: {{10 | currency:'INR'}}/Km {{details.travellingcharges}}</p>
+            <button class="book mt-4" mat-raised-button (click)="setData(details._id,details.charges,details.name)" (click)="open(content)">{{'Book Now'|translate}}</button>
         </div>
     </div>
 </div>

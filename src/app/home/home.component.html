@@ -71,13 +71,13 @@
                         <p> {{'Items'|translate}} : <span *ngFor="let item of data.items">{{item.name}}, </span></p>
                         <p>{{'Address'|translate}} : {{data.location}}</p>
                         <div class="button">
-                            <a class="me-2" href="#" (click)="service_item(data._id)">{{'View More'|translate}}</a>
+                            <a class="me-2"  (click)="service_item(data._id)">{{'View More'|translate}}</a>
                             <button mat-raised-button (click)="setdata(data)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" style="background-color:#bd1e51;color:white;">{{'Book Now'|translate}}</button>
                         </div>
                     </div>
                 </ng-template>
             </owl-carousel-o>
-            <a href="#" Style="float:right;" class="mb-5" (click)="showCold()">{{'View More'|translate}}</a>
+            <a  Style="float:right;" class="mb-5" (click)="showCold()">{{'View More'|translate}}</a>
         </div>
     </div>
 </div>
@@ -107,7 +107,7 @@
                     </div>
                 </ng-template>
             </owl-carousel-o>
-            <a href="#" class="mb-5 me-2" Style="float:right;" (click)="showStorage()">{{'View More'|translate}}</a>
+            <a class="mb-5 me-2" Style="float:right;" (click)="showStorage()">{{'View More'|translate}}</a>
         </div>
     </div>
 </div>
