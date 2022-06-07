@@ -29,8 +29,10 @@
     "Welcome to": "आपका स्वागत है",
     "Terms and conditions": "नियम और शर्तें",
     "You should be the owner of the land.": "आपको जमीन का मालिक होना चाहिए।",
-    "land should not barren.": "भूमि बंजर नहीं होनी चाहिए।",
+    "Land should not barren.": "भूमि बंजर नहीं होनी चाहिए।",
     "There shoud be a facility of water supply.": "जलापूर्ति की सुविधा होनी चाहिए।",
+    "The area of ​​the farm or land should be at least 1 acre or 43560 square feet.": "खेत या जमीन का क्षेत्रफल कम से कम 1 एकड़ या 43560 वर्ग फुट होना चाहिए।",
+    "The duration of ​​the contract should be at least 6 months or 180 days.": "अनुबंध की अवधि कम से कम 6 महीने या 180 दिन होनी चाहिए।",
     "After contract you cannot take land before time period.": "अनुबंध के बाद आप समय से पहले जमीन नहीं ले सकते।",
     "There should be a facility of elecricity.": "बिजली की सुविधा होनी चाहिए।",
     "Your items weight be calculated in kilo gram": "आपके आइटम के वजन की गणना किलो ग्राम में की जाएगी।",
@@ -38,6 +40,7 @@
     "Enter your email": "अपना ईमेल दर्ज करें",
     "Enter your mobile": "अपना मोबाइल दर्ज करें",
     "Enter your address": "अपना पता दर्ज करें",
+    "Please select a picture of your farm.": "कृपया अपने खेत की एक तस्वीर चुनें।",
     "Enter your farm area": "अपना कृषि क्षेत्र दर्ज करें",
     "Enter a duration date": "एक अवधि तिथि दर्ज करें",
     "Enter your description here": "अपना विवरण यहां दर्ज करें",
@@ -48,7 +51,7 @@
     "Area is required.": "क्षेत्र अनिवार्य है।",
     "Dates are required.": "तिथियां अनिवार्य हैं।",
     "Send Request": "अनुरोध भेजें",
-    "we pay 50% amount at the time of contract remaining amount will be paid till last date.": "हम अनुबंध के समय 50% राशि का भुगतान करते हैं शेष राशि का भुगतान अंतिम तिथि तक किया जाएगा।",
+    "We pay 50% amount at the time of contract remaining amount will be paid till last date.": "हम अनुबंध के समय 50% राशि का भुगतान करते हैं शेष राशि का भुगतान अंतिम तिथि तक किया जाएगा।",
     "Equipment rent per day": "उपकरण किराया प्रति दिन",
     "Please enter the details": "कृपया विवरण दर्ज करें।",
     "Total": "कुल",
@@ -91,8 +94,8 @@
     "CUSTOMER CENTRICITY": "ग्राहक केंद्रित",
     "SUSTANIBILITY": "वहनीयता",
     "QUALITY": "गुणवत्ता",
-    "Rent Charges":"रेंट चार्ज",
-    "Travelling Charge":"यात्रा शुल्क",
-    "comments":"कमैंट्स "
+    "Rent Charges": "रेंट चार्ज",
+    "Travelling Charge": "यात्रा शुल्क",
+    "comments": "कमैंट्स "
 
 }

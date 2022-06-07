@@ -9,18 +9,40 @@ import { UserService } from '../service/user.service';
   styleUrls: ['./contract-farming.component.css']
 })
 export class ContractFarmingComponent implements OnInit {
+  Im:any=true;
+  check2:any=false;
+  are:any=true;
  contractFarming: ContractFarming = new ContractFarming("","","","","","","","","");
   constructor(private userService: UserService,  private notifyService:ToastrService) { }
+  checkf(){
+    if(this.check2==true)
+    this.check2=false;
+    else
+    this.check2=true;
+  }
+  areacheck(){
+    if(this.contractFarming.area>=43560){
+      this.are=false;
+    }
+      else
+      this.are=true;
+    }
+  id:any= sessionStorage.getItem("id");
+ contractFarming: ContractFarming = new ContractFarming("","","","","","","","","");
+  constructor(private userService: UserService,  private notifyService:ToastrService , public router :Router) { }
+  
 
   selectImage(event:any){
     if(event.target.files.length>0){
       this.contractFarming.image = event.target.files[0];
+      this.Im=false;
       console.log(this.contractFarming.image);
     }
   }
   
 
   public save(){
+    if(sessionStorage.getItem('id')){
     const formData = new FormData();
     formData.append("name",this.contractFarming.name);
     formData.append("email",this.contractFarming.email);
@@ -39,6 +61,11 @@ export class ContractFarmingComponent implements OnInit {
       this.notifyService.error("Request aborted..!!")
      
     })
+  }
+    else{
+      this.notifyService.error("First SingIn...!")
+      this.router.navigate(['sign-in']);
+    }
   }
 
   ngOnInit(): void {
