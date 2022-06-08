@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../service/storage.service';
 import {MatDialog,  MatDialogConfig} from '@angular/material/dialog';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { StorageFormComponent } from '../storage-form/storage-form.component';
 import { ToastrService } from 'ngx-toastr';
-import { ActivatedRoute, Router} from '@angular/router';
 import { UserService } from '../service/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import {StorageCommentComponent} from '../storage-comment/storage-comment.component';
@@ -25,10 +25,22 @@ export class WareStorageComponent implements OnInit {
       public storageService: StorageService,private router:Router,
       private userService:UserService,private activatedRoute :ActivatedRoute,
       private notifyService:ToastrService) {
-  
-      this.storageService.getStorageById(this.activatedRoute.snapshot.paramMap.get('id')).subscribe(data => {
-        this.storage = data;
-      })
+        router.events.subscribe(event=>{
+           if(event instanceof NavigationEnd){
+            this.storageService.getStorageById(this.activatedRoute.snapshot.paramMap.get('id')).subscribe(data => {
+              this.storage = data;
+            })
+           }
+          //   this.text = this.activatedRouter.snapshot.paramMap.get('search')
+          //   console.log(this.activatedRouter.snapshot.paramMap.get('search'));
+        
+          //   this.userService.User_product(this.text).subscribe(data=>{
+          //     console.log(data.storages);
+          //     console.log(data.services);
+          //     this.storages = data.storage;
+          //     this.services = data.service;
+            });
+     
     }
     checks=[];
     service_item(id:any){
@@ -161,7 +173,7 @@ export class WareStorageComponent implements OnInit {
       if(this.isLoggedIn()){
  
        console.log(this.items);
-      this.onPay(this.total);
+     //  this.onPay(this.storageTotal);
        this.storageService.bookStorage(this.single_items._id,this.total,this.items,this.mobile).subscribe(data=>{
        
          console.log(data);
@@ -213,89 +225,47 @@ export class WareStorageComponent implements OnInit {
     //   }
      
     // }
-     
-  title = 'payment';
-  onPay(amount:any){
-   if(this.isLoggedIn()){
-    this.userService.createOrder(amount).subscribe(data=>{
-      console.log(data.id);
-      console.log(data);
-    
-      var options = {
-        
-       "key": "rzp_test_MqoJug1nXNqVws", // Enter the Key ID generated from the Dashboard
-       "amount": "10000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-       "currency": "INR",
-       "name": "Acme Corp",
-       "description": "Test Transaction",
-       "image": "https://example.com/your_logo",
-       "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-       "callback_url": "http://localhost:3000/order/payment-status",
-       "prefill": {
-           "name": "Devika Kushwah",
-           "email": "devikakushwah29@gmail.com",
-           "contact": "8770784399"
-       },
-       "notes": {
-           "address": "Razorpay Corporate Office"
-       },
-       "theme": {
-           "color": "#3399cc"
-       }
-   };
-   
-   var rzp1 = new Razorpay(options);
- 
-     rzp1.open();
-    })
-   }
-   else{
-     alert("First login required");
-     this.router.navigate(['signIn']);
-   }
-  }
- 
     openDialog(id:any): void {
       this.dialog.open(StorageCommentComponent,{data:id});
     }
     
-  //   title = 'payment';
-  // onPay(amount:any){
-  //   var amt = parseInt(amount);
-  //   if(this.isLoggedIn()){
-  //   this.userService.createOrder(amount).subscribe(data=>{
-  //       console.log(data);
-  //        alert(data.id);
-  //       var options = {
-  //       "key": "rzp_test_MqoJug1nXNqVws", // Enter the Key ID generated from the Dashboard
-  //       "amount": amt*10, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-  //       "currency": "INR",
-  //       "name": "Acme Corp",
-  //       "description": "Test Transaction",
-  //       "image": "https://example.com/your_logo",
-  //       "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-  //       "callback_url": "http://localhost:3000/order/payment-status",
-  //       "prefill": {
-  //           "name": "Devika Kushwah",
-  //           "email": "devikakushwah29@gmail.com",
-  //           "contact": "8770784399"
-  //       },
-  //       "notes": {
-  //           "address": "Razorpay Corporate Office"
-  //       },
-  //       "theme": {
-  //           "color": "#3399cc"
-  //       }
-  //   };
-  //   console.log(options);
+    title = 'payment';
+  onPay(amount:any){
+    var amt = parseInt(amount);
+    if(this.isLoggedIn()){
+    this.userService.createOrder(amount).subscribe(data=>{
+        console.log(data);
+         alert(data.id);
+        var options = {
+        "key": "rzp_test_MqoJug1nXNqVws", // Enter the Key ID generated from the Dashboard
+        "amount": amt*10, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "Acme Corp",
+        "description": "Test Transaction",
+        "image": "https://example.com/your_logo",
+        "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "callback_url": "http://localhost:3000/order/payment-status",
+        "prefill": {
+            "name": "Devika Kushwah",
+            "email": "devikakushwah29@gmail.com",
+            "contact": "8770784399"
+        },
+        "notes": {
+            "address": "Razorpay Corporate Office"
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+    };
+    console.log(options);
   
-  //   var rzp1 = new Razorpay(options);
+    var rzp1 = new Razorpay(options);
   
-  //     rzp1.open()
+      rzp1.open()
         
-  //     })
-  //   }
-  // }
+      })
+    }
+  }
   
   trackByIndex(index: number, obj: any): any {
     console.log(obj);
