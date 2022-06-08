@@ -12,8 +12,7 @@ export class ContractFarmingComponent implements OnInit {
   Im:any=true;
   check2:any=false;
   are:any=true;
- contractFarming: ContractFarming = new ContractFarming("","","","","","","","","");
-  constructor(private userService: UserService,  private notifyService:ToastrService) { }
+
   checkf(){
     if(this.check2==true)
     this.check2=false;
