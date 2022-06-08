@@ -13,7 +13,7 @@ export class ContractFarmingComponent implements OnInit {
   check2:any=false;
   are:any=true;
  contractFarming: ContractFarming = new ContractFarming("","","","","","","","","");
-  constructor(private userService: UserService,  private notifyService:ToastrService) { }
+  constructor(private userService: UserService,  private notifyService:ToastrService, public router :Router) { }
   checkf(){
     if(this.check2==true)
     this.check2=false;
@@ -28,8 +28,7 @@ export class ContractFarmingComponent implements OnInit {
       this.are=true;
     }
   id:any= sessionStorage.getItem("id");
- contractFarming: ContractFarming = new ContractFarming("","","","","","","","","");
-  constructor(private userService: UserService,  private notifyService:ToastrService , public router :Router) { }
+
   
 
   selectImage(event:any){
