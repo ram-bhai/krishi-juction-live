@@ -16,7 +16,8 @@
                 <td >{{list.start_date | date : 'dd/MMMM/yyyy'}}</td>
                 <td >{{list.end_date | date : 'dd/MMMM/yyyy'}}</td>
                 <td >
-                    <button class="btn btn-outline-danger">Apply</button>
+                    <button class="btn btn-outline-danger" *ngIf="checkreq()" (click)="bookreq(list._id)">Apply</button>
+                    <p class="text-success" *ngIf="!checkreq()"><i class="fa-solid fa-check"></i>Request sended</p>
                 </td>
                 <td>
                     <button type="button" (click)="getDetail(list)" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">

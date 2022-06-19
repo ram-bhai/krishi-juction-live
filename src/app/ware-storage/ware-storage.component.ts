@@ -29,7 +29,20 @@ export class WareStorageComponent implements OnInit {
       this.storageService.getStorageById(this.activatedRoute.snapshot.paramMap.get('id')).subscribe(data => {
         this.storage = data;
       })
+
+      this.loadData();
     }
+
+    showSpinner = true;
+    load = false;
+
+  loadData() {
+    return setTimeout(() => {
+      this.showSpinner = false;
+      this.load = true;
+    }, 3000);
+  }
+
     checks=[];
     service_item(id:any){
       alert(id);

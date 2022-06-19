@@ -72,6 +72,18 @@ export class HomeComponent implements OnInit {
       
       console.log(this.storage.id)
     })
+
+    this.loadData();
+  }
+
+  showSpinner = true;
+  load = false;
+
+  loadData() {
+    return setTimeout(() => {
+      this.showSpinner = false;
+      this.load = true;
+    }, 5000);
   }
  
   setData(id:any,price:any,name:any){

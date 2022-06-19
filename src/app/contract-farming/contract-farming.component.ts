@@ -13,6 +13,7 @@ export class ContractFarmingComponent implements OnInit {
   check2:any=false;
   are:any=true;
 
+
  contractFarming: ContractFarming = new ContractFarming("","","","","","","","","");
   constructor(private userService: UserService,  private notifyService:ToastrService, public router :Router) { }
   

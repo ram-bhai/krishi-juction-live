@@ -28,7 +28,19 @@ export class EquipmentsComponent implements OnInit {
   mobile:any;
   starRating = 0;
 
-  constructor(private offcanvasService: NgbOffcanvas,private dataService:ServicesService,public dialog: MatDialog,private notifyService:ToastrService,private adminService : AdminService,private userService: UserService,private router:Router) { }
+  constructor(private offcanvasService: NgbOffcanvas,private dataService:ServicesService,public dialog: MatDialog,private notifyService:ToastrService,private adminService : AdminService,private userService: UserService,private router:Router) { 
+    this.loadData();
+  }
+
+  showSpinner = true;
+  load = false;
+
+  loadData() {
+    return setTimeout(() => {
+      this.showSpinner = false;
+      this.load = true;
+    }, 5000);
+  }
 
 
   service: Service = new Service("", "", "", "", false, false,"","");
@@ -119,7 +131,9 @@ export class EquipmentsComponent implements OnInit {
        "description": "Test Transaction",
        "image": "https://example.com/your_logo",
        "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-       
+
+      // "callback_url": "http://localhost:3000/order/payment-status",
+
        handler: (response: {
         razorpay_payment_id: any;
         razorpay_order_id: any;
@@ -127,13 +141,15 @@ export class EquipmentsComponent implements OnInit {
         razorpay_prefill: any;
       }) => {
         console.log(response);
+
         sessionStorage.setItem('payment-detail', JSON.stringify(response));
           this.userService.User_order_Sys(response).subscribe(data=>{
-            // this.notifyService.success("Payment Successfully..!!")
+           
              console.log(data);
           });
       },
   
+     
        "prefill": {
            "name": "Devika Kushwah",
            "email": "devikakushwah29@gmail.com",

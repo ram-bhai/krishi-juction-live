@@ -13,12 +13,12 @@
     </div>
 </div>
 
-<p>
+<!-- <p>
     <a class="btn btn-warning ms-5 p-2" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
         {{'comments'|translate}}
     </a>
 
-</p>
+</p> -->
 <div class="collapse" id="collapseExample">
     <div class="card card-body p-5">
         <div>
@@ -32,7 +32,7 @@
 
 <ng-template #content let-offcanvas>
     <div class="offcanvas-header">
-        <h4 class="offcanvas-title" id="offcanvas-basic-title">{{'Welcome:'|translate'}} {{username}}</h4>
+        <h4 class="offcanvas-title" id="offcanvas-basic-title">Welcome {{username}}</h4>
         <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
     </div>
     <div class="offcanvas-body">
@@ -48,7 +48,7 @@
                 <div class="items">
                     <mat-form-field appearance="legacy" class="mt-3">
                         <mat-label>Enter address</mat-label>
-                        <input #add="ngModel" [(ngModel)]="service.address" matInput placeholder="Placeholder" required="true">
+                        <input #add="ngModel" [(ngModel)]="service.address" matInput placeholder="address here..." required="true">
                         <mat-hint *ngIf="add.errors?.['required']">Address is Required</mat-hint>
                         <mat-icon matSuffix></mat-icon>
 
@@ -56,7 +56,7 @@
 
                     <mat-form-field appearance="legacy" class="mt-3">
                         <mat-label>Enter mobile</mat-label>
-                        <input #mob="ngModel" [(ngModel)]="service.mobile" pattern="^(\+[\d]{1,5}|0)?[7-9]\d{9}$" matInput placeholder="Placeholder" required="true">
+                        <input #mob="ngModel" [(ngModel)]="service.mobile" pattern="^(\+[\d]{1,5}|0)?[7-9]\d{9}$" matInput placeholder="mobile here..." required="true">
                         <mat-hint *ngIf="!mob.invalid && (mob.dirty || mob.touched) && mob.errors?.['pattern']" class="danger">Plz enter your correct number. </mat-hint>
                         <mat-hint *ngIf="mob.errors?.['required']">Number is required.</mat-hint>
 
@@ -73,7 +73,7 @@
                     </div>
 
                     <mat-form-field appearance="legacy">
-                        <mat-label>Enter the land Area</mat-label>
+                        <mat-label>Enter the land Area in acre</mat-label>
                         <input (keyup)="checkWeight($event)" #weight matInput>
                     </mat-form-field>
 
@@ -100,7 +100,7 @@
 
             <div class="modal-body">
 
-                <p>4.1 Karma shall deliver the Equipment to the location set out in the Order or such other location as the parties may agree at any time after Karma notifies the Customer that the Equipment is ready for delivery.
+                <p>4.1 Krishi Junction shall deliver the Equipment to the location set out in the Order or such other location as the parties may agree at any time after Karma notifies the Customer that the Equipment is ready for delivery.
 
                 </p>
                 <p>5.1 The Equipment shall at all times remain the property of Karma, and the Customer shall have no right, title or interest in or to the Equipment (save the right to possession and use of the Equipment subject to these Conditions).
@@ -113,12 +113,12 @@
                     of the Customer during the Rental Period and any further term during which the Equipment is in the possession, custody or control of the Customer (“Risk Period”) until such time as the Equipment is returned to Oceanscan.
                 </p>
 
-                <p>6.1 Karma send knowledge and experience person with equipment to operate the Equipment.
+                <p>6.1 Krishi Junction send knowledge and experience person with equipment to operate the Equipment.
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button> -->
             </div>
         </div>
     </div>
@@ -137,56 +137,3 @@
 
 
 
-
-<!-- <div class="wrap mt-1">
-    <div class="product">
-        <div class="product-img">
-            <img src="{{details.images}}" alt="">
-    
-        </div>
-        <div class="product-listing">
-            <div class="content">
-                <h1 class="name">{{details.name}}</h1>
-                <p class="info">{{details.description}}</p>
-                <p class="price">{{details.charges}}</p>
-                <p class="price">{{details.travellingcharges}}</p>
-                <div class="btn-and-rating-box">
-                    <div class="rating">
-                        <img src="https://github.com/kunaal438/product-page/blob/master/img/star.png?raw=true" alt="">
-                        <img src="https://github.com/kunaal438/product-page/blob/master/img/star.png?raw=true" alt="">
-                        <img src="https://github.com/kunaal438/product-page/blob/master/img/star.png?raw=true" alt="">
-                        <img src="https://github.com/kunaal438/product-page/blob/master/img/star.png?raw=true" alt="">
-                        <img src="https://github.com/kunaal438/product-page/blob/master/img/star%20stroke.png?raw=true" alt="">
-                    </div>
-                    <button class="btn">{{'buy now'|translate}}</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-</div>
-<p>
-    <a class="btn btn-primary ms-5 p-2" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        comments
-    </a>
-        
-</p>
-<div class="collapse" id="collapseExample">
-    <div class="card card-body p-5">
-        <div>
-            <p>Devika Kushwah</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos hic necessitatibus repellat saepe harum cumque sed fuga placeat velit ea.</p>
-            <hr>
-            <p>Palak Nigam</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius hic magnam est aliquid dolor sapiente non laboriosam veritatis fugit. Vero culpa porro reiciendis vel. Error magnam veritatis ea culpa id.</p>
-            <hr>
-            <p>shriram Mishra</p>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum ratione at non mollitia quas magnam enim a blanditiis eligendi laboriosam omnis placeat earum corporis, dolores odio accusantium dolorem cumque explicabo.</p>
-            <hr>
-            <p>palash sharma</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias deserunt maxime veritatis nobis ea dolores adipisci tempore ullam, repellendus qui maiores aliquam inventore doloremque laudantium eligendi praesentium aut quis asperiores.</p>
-            <hr class='mt-3'>
-        </div>
-    </div>
-</div> -->
-<!-- //carasol -->

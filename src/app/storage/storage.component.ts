@@ -27,7 +27,20 @@ starRating = 0;
       this.storage = data;
       console.log(data);
     })
+
+    this.loadData();
   }
+
+  showSpinner = true;
+  load = false;
+
+  loadData() {
+    return setTimeout(() => {
+      this.showSpinner = false;
+      this.load = true;
+    }, 3000);
+  }
+
   checks=[];
   service_item(id:any){
     
