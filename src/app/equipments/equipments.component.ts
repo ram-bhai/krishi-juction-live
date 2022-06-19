@@ -138,7 +138,9 @@ export class EquipmentsComponent implements OnInit {
        "description": "Test Transaction",
        "image": "https://example.com/your_logo",
        "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+
       // "callback_url": "http://localhost:3000/order/payment-status",
+
        handler: (response: {
         razorpay_payment_id: any;
         razorpay_order_id: any;
@@ -146,24 +148,15 @@ export class EquipmentsComponent implements OnInit {
         razorpay_prefill: any;
       }) => {
         console.log(response);
-       // sessionStorage.setItem('payment-detail', JSON.stringify(response));
-        this.userService.User_equip(response).subscribe(data=>{
-            console.log(data);
-            alert(data);
-        });
-        
-        // this.serve
-        //   .placeOrder(response, this.userId, this.Address, this.cartItems)
-        //   .subscribe((data) => {
-        //     if ((data.msg = 'ok')) {
-        //       this.serve.deleteFullCart(this.userId).subscribe((data) => {
-        //         console.log(data);
-        //         // this.router.navigate(['/order-success'])
-        //         // window.location.reload()
-        //       });
-        //     }
-        //   });
+
+        sessionStorage.setItem('payment-detail', JSON.stringify(response));
+          this.userService.User_order_Sys(response).subscribe(data=>{
+           
+             console.log(data);
+          });
       },
+  
+     
        "prefill": {
            "name": "Devika Kushwah",
            "email": "devikakushwah29@gmail.com",
@@ -195,8 +188,8 @@ export class EquipmentsComponent implements OnInit {
   favorite(tool_id:any){
     const user_id = sessionStorage.getItem("id");
     this.userService.User_favorite(tool_id,user_id).subscribe(data=>{
-      alert(data);
-      alert("data saved");
+      this.notifyService.success("Favorite saved.!!")
+      
     })
   }
   opentoDialog(){

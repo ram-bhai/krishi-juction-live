@@ -22,6 +22,7 @@ export class UserService {
   favorite = "https://krishi-backend.herokuapp.com/fav/favorite";
  // orderApi = "https://krishi-backend.herokuapp.com/order/pay";
   orderApi = 'http://localhost:3000/order/pay';
+  orderSys = "http://localhost:3000/order/payment-status";
 
   // edit_profile = 'http://localhost:3000/customer/edit-profile/';
   edit_profile = "https://krishi-backend.herokuapp.com/customer/edit-profile/";
@@ -41,6 +42,9 @@ export class UserService {
   User_favorite_view(user_id:any){
     return this.http.get<any>(this.view_favorite+user_id);
   }
+    User_order_Sys(res:any){
+      return this.http.post<any>(this.orderSys,{res});
+    }
   User_favorite(tool_id:any,user_id:any){
     return this.http.post<any>(this.favorite,{
       tool_id:tool_id,

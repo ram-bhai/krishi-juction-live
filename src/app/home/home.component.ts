@@ -249,7 +249,7 @@ export class HomeComponent implements OnInit {
     console.log(items._id);
   }
   saved(){
-    
+  
     if(this.isLoggedIn()){
     this.onPay(this.total);
       this.orderList = [{bookingDate:this.bookingDate,tool_id:this.tid}];
@@ -264,18 +264,20 @@ export class HomeComponent implements OnInit {
        this.notifyService.success("Order Booked Successfully..!!")
 
       },err=>{
+        
        console.log(err);
        if(err instanceof HttpErrorResponse){
          if(err.status == 400){
-           this.notifyService.error("something happend...");
+           this.notifyService.warning("something happend...");
          }
          else if(err.status == 500){
-           this.notifyService.warning("Something is wrong..!")
+           this.notifyService.error("Something is wrong..!")
        }
      }
      })
   }
     else{
+      this.notifyService.warning("first login required..");
         this.router.navigate(['sign-in']);
     }
    
@@ -310,7 +312,6 @@ export class HomeComponent implements OnInit {
       bookingDate:this.bdate,
       endDate:this.edate,
       weight:weight,
-      // kg:item.weight
       kg:50
     }
     this.items.push(temp);
@@ -394,7 +395,21 @@ trackByIndex(index: number, obj: any): any {
        "description": "Test Transaction",
        "image": "https://example.com/your_logo",
        "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-       "callback_url": "http://localhost:3000/order/payment-status",
+       
+       handler: (response: {
+        razorpay_payment_id: any;
+        razorpay_order_id: any;
+        razorpay_signature: any;
+        razorpay_prefill: any;
+      }) => {
+        console.log(response);
+        sessionStorage.setItem('payment-detail', JSON.stringify(response));
+          this.userService.User_order_Sys(response).subscribe(data=>{
+            // this.notifyService.success("Payment Successfully..!!")
+             console.log(data);
+          });
+      },
+  
        "prefill": {
            "name": "Devika Kushwah",
            "email": "devikakushwah29@gmail.com",
@@ -415,7 +430,8 @@ trackByIndex(index: number, obj: any): any {
    }
    
    else{
-     alert("First login required");
+    this.notifyService.success("First Login is required..!!");
+         
      this.router.navigate(['signIn']);
    }
   } 

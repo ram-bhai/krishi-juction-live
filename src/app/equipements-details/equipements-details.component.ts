@@ -83,6 +83,7 @@ open(content:any) {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }else{
+    this.notifyService.success("First Login required..!!")
     this.router.navigate(['sign-in']);
   }
 }
@@ -135,7 +136,20 @@ this.userService.createOrder(amount).subscribe(data=>{
     "description": "Test Transaction",
     "image": "https://example.com/your_logo",
     "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-    "callback_url": "http://localhost:3000/order/payment-status",
+  
+    handler: (response: {
+      razorpay_payment_id: any;
+      razorpay_order_id: any;
+      razorpay_signature: any;
+      razorpay_prefill: any;
+    }) => {
+      console.log(response);
+      sessionStorage.setItem('payment-detail', JSON.stringify(response));
+        this.userService.User_order_Sys(response).subscribe(data=>{
+
+        });
+    },
+
     "prefill": {
         "name": "Devika Kushwah",
         "email": "devikakushwah29@gmail.com",
@@ -159,8 +173,8 @@ var rzp1 = new Razorpay(options);
 favorite(tool_id:any){
   const user_id = sessionStorage.getItem("id");
   this.userService.User_favorite(tool_id,user_id).subscribe(data=>{
-    alert(data);
-    alert("data saved");
+    this.notifyService.success("Favorite ..!!")
+    
   })
 }
 
@@ -187,13 +201,13 @@ save(){
      console.log(err);
      if(err instanceof HttpErrorResponse){
        if(err.status == 400){
-         this.notifyService.error("user already exists...");
+         this.notifyService.warning("something is wrong...");
        }
        else  if(err.status == 404){
-        this.notifyService.error("something is wrong...");
+        this.notifyService.warning("something is wrong...");
       }
        else if(err.status == 500){
-         this.notifyService.warning("Something is wrong..!")
+         this.notifyService.error("Something is wrong..!")
        // alert(err);
      }
    }

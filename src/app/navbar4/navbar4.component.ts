@@ -118,4 +118,7 @@ export class Navbar4Component implements OnInit {
       console.log("Your browser dosen't support speech recognition");
     }
    }
+   onHome(){
+    this.router.navigate(['']);
+   }
 }
