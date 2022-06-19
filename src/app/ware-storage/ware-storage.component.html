@@ -1,85 +1,47 @@
-<div class="banner">
-    <h1>{{'Ware Storage'|translate}}</h1>
-    <p>{{'Whether storage takes place on the farm or in silos off the farm, increases in the value of products due to their time utility must be sufficient to compensate for costs at this stage, or else storage will not be profitable. These costs will include
-        heating, lighting, chemical treatments, store management and labour, We Provide them a storage Facility too !.'|translate}}</p>
+<div class="spinner" *ngIf="showSpinner">
+    <mat-spinner color="accent"></mat-spinner>
 </div>
 
+<section *ngIf="load">
 
-
-<div class="container">
-    <div class="row cards2" *ngFor="let st of storage | paginate:{itemsPerPage:8,currentPage:page,totalItems:totalLength}">
-        <div class="col-lg-6 col-md-6 col-sm-12 left2">
-            <img src="{{st.images}}" alt="" class="left2_img">
-
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 p-2">
-            <h1 class="mt-4">{{st.name | uppercase}}</h1>
-
-            <p class="mt-3" style="font-size:18px;">Items : <span class="fruit" *ngFor="let item of st.items">{{item.name | uppercase}} </span></p>
-
-            <p class="description mt-3 mb-3">{{'Description'| translate}} : {{st.storage_description}}</p>
-            <a href="#" (click)="service_item(st._id)">View More</a>
-            <button mat-raised-button class="book_now ms-5" (click)="setdata(st)" (click)="open(content)">Book Now</button>
-
-
-            <div class="reviews mt-3">
-                <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating>
+    <div class="banner">
+        <h1>{{'Ware Storage'|translate}}</h1>
+        <p>{{'Whether storage takes place on the farm or in silos off the farm, increases in the value of products due to their time utility must be sufficient to compensate for costs at this stage, or else storage will not be profitable. These costs will include
+            heating, lighting, chemical treatments, store management and labour, We Provide them a storage Facility too !.'|translate}}</p>
+    </div>
+    
+    
+    
+    <div class="container">
+        <div class="row cards2" *ngFor="let st of storage | paginate:{itemsPerPage:8,currentPage:page,totalItems:totalLength}">
+            <div class="col-lg-6 col-md-6 col-sm-12 left2">
+                <img src="{{st.images}}" alt="" class="left2_img">
+    
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 p-2">
+                <h1 class="mt-4">{{st.name | uppercase}}</h1>
+    
+                <p class="mt-3" style="font-size:18px;">Items : <span class="fruit" *ngFor="let item of st.items">{{item.name | uppercase}} </span></p>
+    
+                <p class="description mt-3 mb-3">{{'Description'| translate}} : {{st.storage_description}}</p>
+                <a href="#" (click)="service_item(st._id)">View More</a>
+                <button mat-raised-button class="book_now ms-5" (click)="setdata(st)" (click)="open(content)">Book Now</button>
+    
+    
+                <div class="reviews mt-3">
+                    <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<pagination-controls class="my-pagination" (pageChange)="page=$event"></pagination-controls>
-
-<ng-template #content let-offcanvas>
-    <div class="offcanvas-header">
-        <h4 class="offcanvas-title" id="offcanvas-basic-title">Welcome in {{single_items.name}}</h4>
-        <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
-    </div>
-    <div class="offcanvas-body">
-        <div class="description">
-            Your items weight be calculated in kilo gram
+    <pagination-controls class="my-pagination" (pageChange)="page=$event"></pagination-controls>
+    
+    <ng-template #content let-offcanvas>
+        <div class="offcanvas-header">
+            <h4 class="offcanvas-title" id="offcanvas-basic-title">Welcome in {{single_items.name}}</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
         </div>
-        <p>Please select the item first to enter the items details</p>
-        <h3 class="total">Total : <span class="tot">{{total |currency:"INR"}}</span></h3>
-        <mat-form-field appearance="legacy">
-            <mat-label>Enter your Mobile no.</mat-label>
-            <input [(ngModel)]="mobile" #mob="ngModel" pattern="^(\+[\d]{1,5}|0)?[7-9]\d{9}$" required="true" matInput>
-            <mat-hint *ngIf="mob.errors?.['required']">Number is required.</mat-hint>
-            <mat-hint *ngIf="!mob.invalid && (mob.dirty || mob.touched) && mob.errors?.['pattern']" class="danger">Plz enter your correct number. </mat-hint>
-        </mat-form-field>
-
-        <div class="items" *ngFor="let item of single_items.items;let index = index;trackBy:trackByIndex;">
-            <mat-checkbox id="{{'chk'+item.name}}" [(ngModel)]="item.selected" class="example-margin">{{item.name}}</mat-checkbox>
-
-            <div class="duration">
-                <label for="">
-                        Starting Date <input type="date" #bookingDate disabled="{{!item.selected}}" matInput>
-                    </label>
-                <label for="" style="float: right">
-                        End Date <input type="date" #endDate disabled="{{!item.selected}}" matInput>
-                    </label>
-            </div>
-
-            <mat-form-field appearance="legacy">
-                <mat-label>Enter the weight</mat-label>
-                <input (keyup)="checkWeight($event,item.name)" #weight disabled="{{!item.selected}}" required="true" matInput>
-            </mat-form-field>
-
-
-            <button [disabled]="true" id="{{'btn'+item.name}}" class="ok" (click)="itemsData(item,bookingDate.value,endDate.value,weight.value,index)">ok</button>
-        </div>
-        <button class="book" (click)="save()" mat-raised-button>Book Now</button>
-    </div>
-</ng-template>
-
-
-<!-- <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Welcome in {{single_items.name}}</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <div>
+        <div class="offcanvas-body">
             <div class="description">
                 Your items weight be calculated in kilo gram
             </div>
@@ -91,36 +53,82 @@
                 <mat-hint *ngIf="mob.errors?.['required']">Number is required.</mat-hint>
                 <mat-hint *ngIf="!mob.invalid && (mob.dirty || mob.touched) && mob.errors?.['pattern']" class="danger">Plz enter your correct number. </mat-hint>
             </mat-form-field>
-
+    
             <div class="items" *ngFor="let item of single_items.items;let index = index;trackBy:trackByIndex;">
-                <mat-checkbox id="{{'chk'+item.name}}"  [(ngModel)]="item.selected" class="example-margin" >{{item.name}}</mat-checkbox>
-                
+                <mat-checkbox id="{{'chk'+item.name}}" [(ngModel)]="item.selected" class="example-margin">{{item.name}}</mat-checkbox>
+    
                 <div class="duration">
                     <label for="">
-                        Starting Date <input type="date" #bookingDate disabled="{{!item.selected}}" matInput>
-                    </label>
+                            Starting Date <input type="date" #bookingDate disabled="{{!item.selected}}" matInput>
+                        </label>
                     <label for="" style="float: right">
-                        End Date <input type="date" #endDate disabled="{{!item.selected}}" matInput>
-                    </label>
+                            End Date <input type="date" #endDate disabled="{{!item.selected}}" matInput>
+                        </label>
                 </div>
-
+    
                 <mat-form-field appearance="legacy">
                     <mat-label>Enter the weight</mat-label>
                     <input (keyup)="checkWeight($event,item.name)" #weight disabled="{{!item.selected}}" required="true" matInput>
                 </mat-form-field>
-                
-
-                <button [disabled]="true" id="{{'btn'+item.name}}"class="ok" (click)="itemsData(item,bookingDate.value,endDate.value,weight.value,index)">ok</button>
-
+    
+    
+                <button [disabled]="true" id="{{'btn'+item.name}}" class="ok" (click)="itemsData(item,bookingDate.value,endDate.value,weight.value,index)">ok</button>
             </div>
-            
+            <button class="book" (click)="save()" mat-raised-button>Book Now</button>
         </div>
-
-        <button class="book" (click)="save()" mat-raised-button>Book Now</button>
-
+    </ng-template>
+    
+    
+    <!-- <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Welcome in {{single_items.name}}</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                <div class="description">
+                    Your items weight be calculated in kilo gram
+                </div>
+                <p>Please select the item first to enter the items details</p>
+                <h3 class="total">Total : <span class="tot">{{total |currency:"INR"}}</span></h3>
+                <mat-form-field appearance="legacy">
+                    <mat-label>Enter your Mobile no.</mat-label>
+                    <input [(ngModel)]="mobile" #mob="ngModel" pattern="^(\+[\d]{1,5}|0)?[7-9]\d{9}$" required="true" matInput>
+                    <mat-hint *ngIf="mob.errors?.['required']">Number is required.</mat-hint>
+                    <mat-hint *ngIf="!mob.invalid && (mob.dirty || mob.touched) && mob.errors?.['pattern']" class="danger">Plz enter your correct number. </mat-hint>
+                </mat-form-field>
+    
+                <div class="items" *ngFor="let item of single_items.items;let index = index;trackBy:trackByIndex;">
+                    <mat-checkbox id="{{'chk'+item.name}}"  [(ngModel)]="item.selected" class="example-margin" >{{item.name}}</mat-checkbox>
+                    
+                    <div class="duration">
+                        <label for="">
+                            Starting Date <input type="date" #bookingDate disabled="{{!item.selected}}" matInput>
+                        </label>
+                        <label for="" style="float: right">
+                            End Date <input type="date" #endDate disabled="{{!item.selected}}" matInput>
+                        </label>
+                    </div>
+    
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Enter the weight</mat-label>
+                        <input (keyup)="checkWeight($event,item.name)" #weight disabled="{{!item.selected}}" required="true" matInput>
+                    </mat-form-field>
+                    
+    
+                    <button [disabled]="true" id="{{'btn'+item.name}}"class="ok" (click)="itemsData(item,bookingDate.value,endDate.value,weight.value,index)">ok</button>
+    
+                </div>
+                
+            </div>
+    
+            <button class="book" (click)="save()" mat-raised-button>Book Now</button>
+    
+        </div>
     </div>
-</div>
+    
+    
+    
+     -->
 
-
-
- -->
+</section>

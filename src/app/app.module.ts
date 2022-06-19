@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient} from '@angular/common/http';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -156,6 +156,7 @@ import { ApprovedPipe } from './contract-lists/approved.pipe';
     MatRadioModule,
     MatSelectModule,
     NgbModule,
+    MatProgressSpinnerModule,
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,

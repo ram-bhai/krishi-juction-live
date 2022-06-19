@@ -28,7 +28,19 @@ export class EquipmentsComponent implements OnInit {
   mobile:any;
   starRating = 0;
 
-  constructor(private offcanvasService: NgbOffcanvas,private dataService:ServicesService,public dialog: MatDialog,private notifyService:ToastrService,private adminService : AdminService,private userService: UserService,private router:Router) { }
+  constructor(private offcanvasService: NgbOffcanvas,private dataService:ServicesService,public dialog: MatDialog,private notifyService:ToastrService,private adminService : AdminService,private userService: UserService,private router:Router) { 
+    this.loadData();
+  }
+
+  showSpinner = true;
+  load = false;
+
+  loadData() {
+    return setTimeout(() => {
+      this.showSpinner = false;
+      this.load = true;
+    }, 5000);
+  }
 
 
   service: Service = new Service("", "", "", "", false, false,"","");
