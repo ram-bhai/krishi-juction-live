@@ -119,7 +119,32 @@ export class EquipmentsComponent implements OnInit {
        "description": "Test Transaction",
        "image": "https://example.com/your_logo",
        "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-       "callback_url": "http://localhost:3000/order/payment-status",
+      // "callback_url": "http://localhost:3000/order/payment-status",
+       handler: (response: {
+        razorpay_payment_id: any;
+        razorpay_order_id: any;
+        razorpay_signature: any;
+        razorpay_prefill: any;
+      }) => {
+        console.log(response);
+       // sessionStorage.setItem('payment-detail', JSON.stringify(response));
+        this.userService.User_equip(response).subscribe(data=>{
+            console.log(data);
+            alert(data);
+        });
+        
+        // this.serve
+        //   .placeOrder(response, this.userId, this.Address, this.cartItems)
+        //   .subscribe((data) => {
+        //     if ((data.msg = 'ok')) {
+        //       this.serve.deleteFullCart(this.userId).subscribe((data) => {
+        //         console.log(data);
+        //         // this.router.navigate(['/order-success'])
+        //         // window.location.reload()
+        //       });
+        //     }
+        //   });
+      },
        "prefill": {
            "name": "Devika Kushwah",
            "email": "devikakushwah29@gmail.com",
