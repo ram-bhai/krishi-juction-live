@@ -59,10 +59,10 @@
     
                 <div class="duration">
                     <label for="">
-                            Starting Date <input type="date" #bookingDate disabled="{{!item.selected}}" matInput>
+                            Starting Date <input type="date" (change)="dateValid()" [(ngModel)]="bookingDate" disabled="{{!item.selected}}" matInput>
                         </label>
                     <label for="" style="float: right">
-                            End Date <input type="date" #endDate disabled="{{!item.selected}}" matInput>
+                            End Date <input type="date" (change)="dateValid()" [(ngModel)]="endDate" disabled="{{!item.selected}}" matInput>
                         </label>
                 </div>
     
@@ -72,7 +72,7 @@
                 </mat-form-field>
     
     
-                <button [disabled]="true" id="{{'btn'+item.name}}" class="ok" (click)="itemsData(item,bookingDate.value,endDate.value,weight.value,index)">ok</button>
+                <button [disabled]="true" id="{{'btn'+item.name}}" class="ok" (click)="itemsData(item,weight.value,index)">ok</button>
             </div>
             <button class="book" (click)="save()" mat-raised-button>Book Now</button>
         </div>

@@ -43,6 +43,17 @@ export class WareStorageComponent implements OnInit {
     }, 3000);
   }
 
+  minDate = new Date().toJSON().slice(0, 10);
+  bookingDate:any;
+  endDate:any;
+
+  dateValid(){
+    if(this.bookingDate < this.minDate)
+      this.bookingDate = '';
+      if(this.endDate < this.minDate)
+      this.endDate = '';
+  }
+
     checks=[];
     service_item(id:any){
       alert(id);
@@ -88,19 +99,6 @@ export class WareStorageComponent implements OnInit {
       }
     }
   
-  
-    wiehgt(name:any,w:any,charges:any,kg:any){
-      var temp:any={
-        name:name,
-        weight:w,
-        amount:charges,
-        kg:kg
-      }
-      this.items.push(temp);
-      console.log(this.items);
-      // this.calculate();
-    }
-  
     isSelected(name:any,weight:any){
       console.log(name);
       console.log(weight);
@@ -139,25 +137,25 @@ export class WareStorageComponent implements OnInit {
       });
     }
   
-    itemsData(item:any,bookingDate:any,endDate:any,weight:any,index:any){
+    itemsData(item:any,weight:any,index:any){
       var temp = {
         name:item.name,
         amount:item.charges,
-        bookingDate:bookingDate,
-        duration:endDate,
+        bookingDate:this.bookingDate,
+        duration:this.endDate,
         weight:weight,
         // kg:item.weight
         kg:50
       }
       this.items.push(temp);
-      var date1 = new Date(bookingDate);
-      var date2 = new Date(endDate);
+      var date1 = new Date(this.bookingDate);
+      var date2 = new Date(this.endDate);
       var minusDate = date1.getTime() - date2.getTime();
       var totalDays = minusDate / (1000 * 3600 * 24);
       if(totalDays < 0) {
         totalDays *= -1;
       }
-      //this.calculate(totalDays);
+      this.calculate(totalDays);
     }
   
     
@@ -170,6 +168,7 @@ export class WareStorageComponent implements OnInit {
           button.disabled = true;
       }
     }
+
     save(){
       this.calculate(2);
       if(this.isLoggedIn()){
@@ -199,34 +198,7 @@ export class WareStorageComponent implements OnInit {
      }
     
    }
-    // save(){
-    //    if(this.isLoggedIn()){
-  
-    //     console.log(this.items);
-    //    // this.onPay(this.total);
-    //     this.storageService.bookStorage(this.single_items._id,this.total,this.items,this.mobile).subscribe(data=>{
-    //       this.notifyService.success("Successfully Register..");
-    //       this.router.navigate(['sign-in']);
-    //     }, err => {
     
-    //       console.log(err);
-    //       if (err instanceof HttpErrorResponse) {
-    //         if (err.status == 400) {
-    //           this.notifyService.warning("Something went wrong..");
-              
-    //         }
-    //         else if (err.status == 500) {
-    //           this.notifyService.error("Something went wrong..");
-            
-    //         }
-    //       }
-    //     })
-    //   }
-    //   else{
-    //       this.router.navigate(['sign-in']);
-    //   }
-     
-    // }
      
   title = 'payment';
   onPay(amount:any){

@@ -76,7 +76,7 @@
                         <div class="duration">
                             <label for="">
                                 Booking Date 
-                         <input #date="ngModel" type="date" [(ngModel)]="bookingDate" matInput required="true">
+                         <input #date="ngModel" (change)="dateValid()" type="date" [(ngModel)]="bookingDate" matInput required="true">
                          <mat-hint *ngIf="date.errors?.['required']">Dates are Required.</mat-hint>
                             </label>
                         </div>

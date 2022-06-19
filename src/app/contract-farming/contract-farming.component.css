@@ -4,6 +4,12 @@
     --purple: #490b3d;
 }
 
+.mat-date-range-input-start-wrapper .mat-date-range-input-inner {
+    position: absolute;
+    top: -3px;
+    left: 0;
+}
+
 .details_card {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin: auto;

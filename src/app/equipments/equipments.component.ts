@@ -32,6 +32,13 @@ export class EquipmentsComponent implements OnInit {
     this.loadData();
   }
 
+  minDate = new Date().toJSON().slice(0, 10);
+
+  dateValid(){
+    if(this.bookingDate < this.minDate)
+      this.bookingDate = '';
+  }
+
   showSpinner = true;
   load = false;
 

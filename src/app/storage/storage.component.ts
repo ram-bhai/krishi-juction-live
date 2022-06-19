@@ -41,6 +41,17 @@ starRating = 0;
     }, 3000);
   }
 
+  minDate = new Date().toJSON().slice(0, 10);
+  bookingDate:any;
+  endDate:any;
+
+  dateValid(){
+    if(this.bookingDate < this.minDate)
+      this.bookingDate = '';
+      if(this.endDate < this.minDate)
+      this.endDate = '';
+  }
+
   checks=[];
   service_item(id:any){
     
@@ -87,18 +98,6 @@ starRating = 0;
   }
 
 
-  wiehgt(name:any,w:any,charges:any,kg:any){
-    var temp:any={
-      name:name,
-      weight:w,
-      amount:charges,
-      kg:kg
-    }
-    this.items.push(temp);
-    console.log(this.items);
-    // this.calculate();
-  }
-
   isSelected(name:any,weight:any){
     console.log(name);
     console.log(weight);
@@ -124,7 +123,7 @@ starRating = 0;
       console.log("amount" +calc);
       this.total += calc*1*day;
     }
-    console.log(this.total);
+    console.log("total"+this.total);
   }
 
   book(){
@@ -152,19 +151,19 @@ starRating = 0;
     });
   }
 
-  itemsData(item:any,bookingDate:any,endDate:any,weight:any,index:any){
+  itemsData(item:any,weight:any,index:any){
     var temp = {
       name:item.name,
       amount:item.charges,
-      bookingDate:bookingDate,
-      duration:endDate,
+      bookingDate:this.bookingDate,
+      duration:this.endDate,
       weight:weight,
       // kg:item.weight
       kg:50
     }
     this.items.push(temp);
-    var date1 = new Date(bookingDate);
-    var date2 = new Date(endDate);
+    var date1 = new Date(this.bookingDate);
+    var date2 = new Date(this.endDate);
     var minusDate = date1.getTime() - date2.getTime();
     var totalDays = minusDate / (1000 * 3600 * 24);
     if(totalDays < 0) {
