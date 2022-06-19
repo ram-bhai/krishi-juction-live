@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AdminService {
-  // service = 'http://localhost:3000/service/view-services';
-  service = "https://krishi-backend.herokuapp.com/service/view-services";
+   service = 'http://localhost:3000/service/view-services';
+  // service = "https://krishi-backend.herokuapp.com/service/view-services";
   service_details = "https://krishi-backend.herokuapp.com/service/view-services/"
   // service_details = 'http://localhost:3000/service/view-services/';
    storage_details = 'http://localhost:3000/storage/view/';

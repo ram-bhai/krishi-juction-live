@@ -85,6 +85,19 @@ export class HomeComponent implements OnInit {
       this.load = true;
     }, 5000);
   }
+
+  minDate = new Date().toJSON().slice(0, 10);
+  bdate:any;
+  edate:any;
+
+  dateValid(){
+    if(this.bookingDate < this.minDate)
+      this.bookingDate = '';
+    if(this.bdate < this.minDate)
+      this.bdate = "";
+      if(this.edate < this.minDate)
+      this.edate = "";
+  }
  
   setData(id:any,price:any,name:any){
     this.tid = id;
@@ -206,19 +219,6 @@ export class HomeComponent implements OnInit {
   }
 
 
-
-  wiehgt(name:any,w:any,charges:any,kg:any){
-    var temp:any={
-      name:name,
-      weight:w,
-      amount:charges,
-      kg:kg
-    }
-    this.items.push(temp);
-    console.log(this.items);
-    // this.calculate();
-  }
-
   isSelected(name:any,weight:any){
     console.log(name);
     console.log(weight);
@@ -303,19 +303,19 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  itemsData(item:any,bookingDate:any,endDate:any,weight:any){
+  itemsData(item:any,weight:any){
     var temp = {
       name:item.name,
       amount:item.charges,
-      bookingDate:bookingDate,
-      endDate:endDate,
+      bookingDate:this.bdate,
+      endDate:this.edate,
       weight:weight,
       // kg:item.weight
       kg:50
     }
     this.items.push(temp);
-    var date1 = new Date(bookingDate);
-    var date2 = new Date(endDate);
+    var date1 = new Date(this.bdate);
+    var date2 = new Date(this.edate);
     var minusDate = date1.getTime() - date2.getTime();
     var totalDays = minusDate / (1000 * 3600 * 24);
     if(totalDays < 0) {
