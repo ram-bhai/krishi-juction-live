@@ -16,7 +16,8 @@ export class Navbar4Component implements OnInit {
   event$:any;
   search:any;
   constructor(private _location: Location,private userService: UserService,
-    private router: Router,public dialog: MatDialog,private ac : ActivatedRoute,public translate: TranslateService,public toster:ToastrService) {
+    private router: Router,public dialog: MatDialog,private ac : ActivatedRoute,
+    public translate: TranslateService,public toster:ToastrService) {
     translate.addLangs(['hi', 'en']);
     translate.setDefaultLang('en');
     

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../service/user.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { ToastrService } from 'ngx-toastr';
 // import custom validator  class
 import { CustomValidators } from '../providers/CustomValidation';
 import { User } from 'src/app/model/user';
@@ -47,14 +47,14 @@ export class ProfileComponent implements OnInit {
   submitted = false;
   email:any;
   mobile:any;
-  user?:any;
+  
   address?:any;
-  user1: User = new User("", "", "", "", "", "");
-  constructor(private UserService: UserService) { }
+  user: User = new User("", "", "", "", "", "");
+  constructor(private UserService: UserService,public toster:ToastrService) { }
   id:any=sessionStorage.getItem("id");
   ngOnInit(): void {
     this.UserService.User_profile(this.id).subscribe(data=>{
-      alert(data);
+    
       console.log(data);
       this.user = data;
       (<HTMLInputElement>document.getElementById('account-fn'))!.value=data.name;
@@ -68,9 +68,10 @@ export class ProfileComponent implements OnInit {
   
   saved(){
     
-    this.UserService.User_editProfile(this.user1,this.id).subscribe(data=>{
+    this.UserService.User_editProfile(this.user,this.id).subscribe(data=>{
       console.log(data);
       alert("save");
+      this.toster.success('Saved SuccessFully');
     })
   }
  
