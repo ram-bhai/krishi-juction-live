@@ -28,7 +28,7 @@ export class SigninComponent implements OnInit {
     
     this.socialAuthservice.authState.subscribe(data=>{
       this.socialUser=data
-      alert(data);
+      
       this.name = data.name;
       this.email = data.email;
       this.provider = data.provider
@@ -51,7 +51,7 @@ export class SigninComponent implements OnInit {
           }
           else if(err.status == 500){
             this.notifyService.warning("Something is wrong..!")
-          // alert(err);
+          
         }
       }
       })

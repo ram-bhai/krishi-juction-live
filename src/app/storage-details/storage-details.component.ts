@@ -155,10 +155,10 @@ export class StorageDetailsComponent implements OnInit {
      console.log(err);
      if(err instanceof HttpErrorResponse){
        if(err.status == 400){
-         this.notifyService.error("something happend...");
+         this.notifyService.warning("something happend...");
        }
        else if(err.status == 500){
-         this.notifyService.warning("Something is wrong..!")
+         this.notifyService.error("Something is wrong..!")
        // alert(err);
      }
    }
@@ -182,7 +182,7 @@ export class StorageDetailsComponent implements OnInit {
     if(totalDays < 0) {
       totalDays *= -1;
     }
-    alert(totalDays);
+    
     this.calculate(totalDays);
   }
 
@@ -201,12 +201,10 @@ export class StorageDetailsComponent implements OnInit {
 
       console.log(this.items);
       this.onPay(this.total);
-      this.storageService.bookStorage(this.single_items._id,this.total,this.items,this.mobile).subscribe(data=>{
-        alert("result++++"+data);
-        console.log(data);
-      })
+      
     }
     else{
+      this.notifyService.success("First Login Successfully..!!")
         this.router.navigate(['sign-in']);
     }
    
@@ -230,7 +228,22 @@ onPay(amount:any){
       "description": "Test Transaction",
       "image": "https://example.com/your_logo",
       "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      "callback_url": "http://localhost:3000/order/payment-status",
+      
+    handler: (response: {
+      razorpay_payment_id: any;
+      razorpay_order_id: any;
+      razorpay_signature: any;
+      razorpay_prefill: any;
+    }) => {
+      console.log(response);
+      sessionStorage.setItem('payment-detail', JSON.stringify(response));
+        this.userService.User_order_Sys(response).subscribe(data=>{
+          this.storageService.bookStorage(this.single_items._id,this.total,this.items,this.mobile).subscribe(data=>{
+            this.notifyService.success("Booked Successfully..!!")
+            console.log(data);
+          })
+        });
+    },
       "prefill": {
           "name": "Devika Kushwah",
           "email": "devikakushwah29@gmail.com",
@@ -244,7 +257,7 @@ onPay(amount:any){
       }
   };
   console.log(options);
-  alert("dear++++"+options);
+  
   var rzp1 = new Razorpay(options);
 
     rzp1.open()
