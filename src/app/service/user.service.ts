@@ -7,10 +7,10 @@ import { identifierName } from '@angular/compiler';
   providedIn: 'root'
 })
 export class UserService {
-
+  book_service =  "http://localhost:3000/order/payment-status";
   // search = "http://localhost:3000/customer/search";
   search = "https://krishi-backend.herokuapp.com/customer/search";
-  contractFarming = 'https://krishi-backend.herokuapp.com/contract/contract-farming';
+  contractFarming = 'https://localhost:3000/contract/contract-farming';
  //contractFarming = "https://krishi-backend.herokuapp.com/contract/contract-farming";
   // profile = 'http://localhost:3000/customer/view/';
   profile = "https://krishi-backend.herokuapp.com/customer/view/"
@@ -46,6 +46,9 @@ export class UserService {
       tool_id:tool_id,
       user_id:user_id
     });
+  }
+  User_equip(data:any){
+    return this.http.post<any>(this.book_service,{data});
   }
   storageReview(id:any){
     return this.http.get<any>(this.storage_review+id);
