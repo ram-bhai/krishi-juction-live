@@ -54,9 +54,9 @@
                     <mat-form-field appearance="legacy" class="datebox">
                         <mat-label>{{'Enter a duration date'|translate}}</mat-label>
                         <mat-date-range-input [rangePicker]="picker">
-                            <input #date="ngModel" [(ngModel)]="contractFarming.start_date" matStartDate placeholder="Start date" required="true">
-                            <input #date="ngModel" [(ngModel)]="contractFarming.end_date" matEndDate placeholder="End date" required="true">
-                            <mat-hint *ngIf="date.errors?.['required']">{{'Dates are required.'|translate}}</mat-hint>
+                            <input #date1="ngModel" (change)="dateValid()"  [(ngModel)]="contractFarming.start_date" matStartDate placeholder="Start date" required="true">
+                            <input #date2="ngModel"  [(ngModel)]="contractFarming.end_date" matEndDate placeholder="End date" required="true">
+                            <mat-hint *ngIf="date1.errors?.['required']">{{'Dates are required.'|translate}}</mat-hint>
                         </mat-date-range-input>
                         <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -72,7 +72,7 @@
                     <mat-checkbox (click)="checkf()" class="example-margin mb-3"><a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">{{'I agree with terms and conditions'|translate}}</a>
                     </mat-checkbox>
                     <!-- <button mat-raised-button (click)="save()">{{'Send Request'|translate}}</button> -->
-                    <button mat-raised-button [disabled]="are||!check2||Im||email.errors?.['pattern']||date.errors?.['required']||area.errors?.['required']||add.errors?.['required']||mob.errors?.['required']||name.errors?.['required']||email.errors?.['required']" (click)="save()">{{'Send Request'|translate}}</button>
+                    <button mat-raised-button [disabled]="are||!check2||Im||email.errors?.['pattern']||date1.errors?.['required']||area.errors?.['required']||add.errors?.['required']||mob.errors?.['required']||name.errors?.['required']||email.errors?.['required']" (click)="save()">{{'Send Request'|translate}}</button>
 
                 </div>
             </div>

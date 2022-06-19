@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ConnectableObservable } from 'rxjs';
 import { ContractFarming } from 'src/app/model/contract-farming';
 import { UserService } from '../service/user.service';
 @Component({
@@ -31,7 +32,8 @@ export class ContractFarmingComponent implements OnInit {
  contractFarming: ContractFarming = new ContractFarming("","","","","","","","","");
   constructor(private userService: UserService,  private notifyService:ToastrService , public router :Router) { }
   
-
+    date1:any;
+    date2:any;
   selectImage(event:any){
     if(event.target.files.length>0){
       this.contractFarming.image = event.target.files[0];
@@ -66,6 +68,16 @@ export class ContractFarmingComponent implements OnInit {
       this.notifyService.error("First SingIn...!")
       this.router.navigate(['sign-in']);
     }
+  }
+
+  minDate = new Date().toJSON().slice(0, 10);
+
+  dateValid(){
+
+    console.log("this.contractFarming.start_date "+this.contractFarming.start_date);
+    if(this.contractFarming.start_date < this.minDate && this.contractFarming.end_date > this.minDate)
+      this.contractFarming.start_date = '';
+      console.log(this.contractFarming.start_date);
   }
 
   ngOnInit(): void {
