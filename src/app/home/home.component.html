@@ -5,274 +5,276 @@
 <div *ngIf="load">
     <!-- banner starts -->
 
-<div class="container-fluid" style="margin:0;padding:0;">
-    <div class="row">
-        <div class="col-12 wrap">
-            
-            <p>{{'We work to make your production'|translate}}</p>
-            <p class="typing" style="font-weight: bold"></p>
-            <br>
-            <p>{{'So that you can change your'|translate}}</p>
-            <p class="typing2" style="font-weight: bold"></p>
-            <button class="mt-3 mb-3" href="#service" mat-raised-button style="background-color:#490b3d;color:white;padding:0 16px;">{{'Get Start'|translate}}</button>
+    <div class="container-fluid" style="margin:0;padding:0;">
+        <div class="row">
+            <div class="col-12 wrap">
+
+                <p>{{'We work to make your production'|translate}}</p>
+                <p>Faster , Better , Easier</p>
+                <p class="typing" style="font-weight: bold"></p>
+                <br>
+                <p>{{'So that you can change your'|translate}}</p>
+                <p>Dream To Reality</p>
+                <p class="typing2" style="font-weight: bold"></p>
+                <button class="mt-3 mb-3" href="#service" mat-raised-button style="background-color:#490b3d;color:white;padding:0 16px;">{{'Get Start'|translate}}</button>
+            </div>
         </div>
     </div>
-</div>
 
 
-<!-- banner ends -->
+    <!-- banner ends -->
 
 
-<div class="container product_container m-auto bg-white shadow-lg rounded my-5" id="service">
-    <div class="row p-3">
+    <div class="container product_container m-auto bg-white shadow-lg rounded my-5" id="service">
+        <div class="row p-3">
 
+
+            <div class="head p-2">
+                <h1 style="margin:10px;font-size:28px" class="fw-bold m-auto">{{'Services'|translate}}</h1>
+            </div>
+            <div class="col-12 service_col p-5">
+                <owl-carousel-o [options]="customOptions">
+
+                    <ng-template carouselSlide *ngFor="let services of serviced">
+                        <div class="box">
+                            <div class="box_img mb-3">
+                                <img src="{{services.images}}" alt="">
+                            </div>
+                            <h3>{{services.name}}</h3>
+                            <h2 class="mb-2"> Charges:- {{services.charges}} <span>/-Acre</span></h2>
+                            <button mat-raised-button (click)="setData(services._id,services.charges,services.name)" (click)="open(content)" style="background-color:#bd1e51;color:white;display:block;width:100%;">{{'Book Now'|translate}}</button>
+                        </div>
+                    </ng-template>
+                </owl-carousel-o>
+                <a style="float:right" class="mb-5" routerLink="services">{{'View More'|translate}}</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- cold storage starts -->
+
+
+    <div class="container text-center p-2 shadow-lg my-5 bg-white rounded batch">
+        <h1>{{'Store Foodstuf for time period untill you required . We provide Modern refrigeration techniques which made it possible to store agricultural products with a minimum of change in their natural condition'| translate}}.</h1>
+    </div>
+
+    <div class="container m-auto my-5 bg-white shadow-lg rounded">
 
         <div class="head p-2">
-            <h1 style="margin:10px;font-size:28px" class="fw-bold m-auto">{{'Services'|translate}}</h1>
+            <h1 style="margin:10px; font-size:28px;" class="m-auto fw-bold">{{'Cold Storage'|translate}}</h1>
         </div>
-        <div class="col-12 service_col p-5">
-            <owl-carousel-o [options]="customOptions">
+        <div class="row ">
+            <div class="col-12 p-5">
+                <owl-carousel-o [options]="customOptions">
 
-                <ng-template carouselSlide *ngFor="let services of serviced">
-                    <div class="box">
-                        <div class="box_img mb-3">
-                            <img src="{{services.images}}" alt="">
-                        </div>
-                        <h3>{{services.name}}</h3>
-                        <h2 class="mb-2"> Charges:- {{services.charges}} <span>/-Acre</span></h2>
-                        <button mat-raised-button (click)="setData(services._id,services.charges,services.name)" (click)="open(content)" style="background-color:#bd1e51;color:white;display:block;width:100%;">{{'Book Now'|translate}}</button>
-                    </div>
-                </ng-template>
-            </owl-carousel-o>
-            <a  style="float:right" class="mb-5" routerLink="services">{{'View More'|translate}}</a>
-        </div>
-    </div>
-</div>
-
-<!-- cold storage starts -->
-
-
-<div class="container text-center p-2 shadow-lg my-5 bg-white rounded batch">
-    <h1>{{'Store Foodstuf for time period untill you required . We provide Modern refrigeration techniques which made it possible to store agricultural products with a minimum of change in their natural condition'| translate}}.</h1>
-</div>
-
-<div class="container m-auto my-5 bg-white shadow-lg rounded">
-
-    <div class="head p-2">
-        <h1 style="margin:10px; font-size:28px;" class="m-auto fw-bold">{{'Cold Storage'|translate}}</h1>
-    </div>
-    <div class="row ">
-        <div class="col-12 p-5">
-            <owl-carousel-o [options]="customOptions">
-
-                <ng-template carouselSlide *ngFor="let data of coldData">
-                    <div class="storage_card">
-                        <h3 style="white-space: nowrap;
+                    <ng-template carouselSlide *ngFor="let data of coldData">
+                        <div class="storage_card">
+                            <h3 style="white-space: nowrap;
                         overflow: hidden;
                         text-overflow: ellipsis;">{{data.name}}</h3>
-                        <p> {{'Items'|translate}} : <span *ngFor="let item of data.items">{{item.name}}, </span></p>
-                        <p>{{'Address'|translate}} : {{data.location}}</p>
-                        <div class="button">
-                            <a class="me-2"  (click)="service_item(data._id)">{{'View More'|translate}}</a>
-                            <button mat-raised-button (click)="setdata(data)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" style="background-color:#bd1e51;color:white;">{{'Book Now'|translate}}</button>
+                            <p> {{'Items'|translate}} : <span *ngFor="let item of data.items">{{item.name}}, </span></p>
+                            <p>{{'Address'|translate}} : {{data.location}}</p>
+                            <div class="button">
+                                <a class="me-2" (click)="service_item(data._id)">{{'View More'|translate}}</a>
+                                <button mat-raised-button (click)="setdata(data)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" style="background-color:#bd1e51;color:white;">{{'Book Now'|translate}}</button>
+                            </div>
                         </div>
-                    </div>
-                </ng-template>
-            </owl-carousel-o>
-            <a  Style="float:right;" class="mb-5" (click)="showCold()">{{'View More'|translate}}</a>
+                    </ng-template>
+                </owl-carousel-o>
+                <a Style="float:right;" class="mb-5" (click)="showCold()">{{'View More'|translate}}</a>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- cold storage end -->
+    <!-- cold storage end -->
 
 
-<div class="container m-auto my-5 bg-white shadow-lg rounded ">
-    <div class="head p-2">
-        <h1 style="margin:10px; font-size:28px;" class="m-auto fw-bold">{{'Ware House'|translate}}</h1>
-        <hr>
-    </div>
-    <div class="row ">
-        <div class="col-12 p-5">
-            <owl-carousel-o [options]="customOptions">
-                <ng-template carouselSlide *ngFor="let data of wareData">
-                    <div class="storage_card">
-                        <h3 style="white-space: nowrap;
+    <div class="container m-auto my-5 bg-white shadow-lg rounded ">
+        <div class="head p-2">
+            <h1 style="margin:10px; font-size:28px;" class="m-auto fw-bold">{{'Ware House'|translate}}</h1>
+            <hr>
+        </div>
+        <div class="row ">
+            <div class="col-12 p-5">
+                <owl-carousel-o [options]="customOptions">
+                    <ng-template carouselSlide *ngFor="let data of wareData">
+                        <div class="storage_card">
+                            <h3 style="white-space: nowrap;
                         overflow: hidden;
                         text-overflow: ellipsis;">{{data.name}}</h3>
-                        <p>{{'Items'|translate}} : <span *ngFor="let item of data.items">{{item.name}}, </span></p>
-                        <p>{{'Address'|translate}} : {{data.location}}</p>
-                        <div class="button">
-                            <a class="me-2" (click)="service_item(data._id)" >{{'View More'|translate}}</a>
-                            <button mat-raised-button (click)="setdata(data)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" style="background-color:#bd1e51;color:white;">{{'Book Now'|translate}}</button>
+                            <p>{{'Items'|translate}} : <span *ngFor="let item of data.items">{{item.name}}, </span></p>
+                            <p>{{'Address'|translate}} : {{data.location}}</p>
+                            <div class="button">
+                                <a class="me-2" (click)="service_item(data._id)">{{'View More'|translate}}</a>
+                                <button mat-raised-button (click)="setdata(data)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" style="background-color:#bd1e51;color:white;">{{'Book Now'|translate}}</button>
+                            </div>
                         </div>
-                    </div>
-                </ng-template>
-            </owl-carousel-o>
-            <a class="mb-5 me-2" Style="float:right;" (click)="showStorage()">{{'View More'|translate}}</a>
-        </div>
-    </div>
-</div>
-
-<div class="container mt-5 mb-5">
-    <h1 class="text-center m-5 fw-bold" style="font-size:28px;">{{'OUR'|translate}} {{'VALUES'|translate}}</h1>
-    <div class="d-flex flex-wrap justify-content-around">
-        <div class="card value p-3 border-0 m-3">
-            <img src="../../assets/img/Group 11.png" alt="">
-            <h2 class="text-center fw-bold mt-3">{{'INTEGRITY'|translate}}</h2>
-        </div>
-        <div class="card value p-3 border-0 m-3">
-            <img src="../../assets/img/Group 10.png" alt="">
-            <h2 class="text-center fw-bold mt-3">{{'CUSTOMER CENTRICITY'|translate}}</h2>
-        </div>
-        <div class="card value p-3 border-0 m-3">
-            <img src="../../assets/img/Group 6.png" alt="">
-            <h2 class="text-center fw-bold mt-3">{{'SUSTANIBILITY'|translate}}</h2>
-        </div>
-        <div class="card value p-3 border-0 m-3">
-            <img src="../../assets/img/Group 7.png" alt="">
-            <h2 class="text-center fw-bold mt-3">{{'QUALITY'|translate}}</h2>
-        </div>
-    </div>
-</div>
-
-
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">{{'Welcome in'|translate}} {{single_items.name}}</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <div>
-            <div class="description">
-                {{'Your items weight be calculated in kilo gram'|translate}}
+                    </ng-template>
+                </owl-carousel-o>
+                <a class="mb-5 me-2" Style="float:right;" (click)="showStorage()">{{'View More'|translate}}</a>
             </div>
-            <p>Please select the item first to enter the items details</p>
-            <h3 class="total">{{'Total'|translate}} : <span class="tot">{{storageTotal |currency:"INR"}}</span></h3>
-            <mat-form-field appearance="legacy">
-                <mat-label>{{'Enter your Mobile no.'|translate}}</mat-label>
-                <input [(ngModel)]="mobile" #mob="ngModel" pattern="^(\+[\d]{1,5}|0)?[7-9]\d{9}$" required="true" matInput>
-                <mat-hint *ngIf="mob.errors?.['required']">{{'Number is required.'|translate}}</mat-hint>
-                <mat-hint *ngIf="!mob.invalid && (mob.dirty || mob.touched) && mob.errors?.['pattern']" class="danger">{{'Plz enter your correct number.'|translate} </mat-hint>
-            </mat-form-field>
-
-            <div class="items" *ngFor="let item of single_items.items;let index = index;trackBy:trackByIndex;">
-                <mat-checkbox id="{{'chk'+item.name}}" [(ngModel)]="single_items[index]" [(ngModel)]="item.selected" class="example-margin">{{item.name}}</mat-checkbox>
-
-                <div class="duration">
-                    <label for="">
-                        Starting Date <input type="date" (change)="dateValid()" [(ngModel)]="bdate" disabled="{{!item.selected}}" matInput>
-                    </label>
-                    <label for="" style="float: right">
-                        End Date <input type="date" (change)="dateValid()" [(ngModel)]="edate" disabled="{{!item.selected}}" matInput>
-                    </label>
-                </div>
-
-                <mat-form-field appearance="legacy">
-                    <mat-label>Enter the weight</mat-label>
-                    <input (keyup)="checkWeight($event,item.name)" #weight disabled="{{!item.selected}}" required="true" matInput>
-                </mat-form-field>
-
-
-                <button [disabled]="true" id="{{'btn'+item.name}}" class="ok" (click)="itemsData(item,weight.value)">ok</button>
-            </div>
-
-        </div>
-
-    </div>
-
-    <button class="book" (click)="save()" mat-raised-button>{{'Book Now'| translate}}</button>
-
-</div>
-
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog  modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
-                    <h1>Terms & Conditions of Rental of Equipment</h1>
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <div class="modal-body">
-
-                <p>4.1 Krishi Junction shall deliver the Equipment to the location set out in the Order or such other location as the parties may agree at any time after Karma notifies the Customer that the Equipment is ready for delivery.
-
-                </p>
-                <p>5.1 The Equipment shall at all times remain the property of Krishi Junction, and the Customer shall have no right, title or interest in or to the Equipment (save the right to possession and use of the Equipment subject to these Conditions).
-
-                </p>
-                <p>5.2 The Customer shall give Krishi Junction immediate notice in the event the Equipment is lost, stolen or damaged as a result of the Customer’s possession or use of the Equipment or if there is a claim or, for any reason, a threat of
-                    seizure of the Equipment.
-                </p>
-                <p>5.3 The risk of loss, theft, damage or destruction of the Equipment shall pass to the Customer on delivery of the Equipment to the Customer, or where applicable, the Customer’s appointed agent. The Equipment shall remain at the sole risk
-                    of the Customer during the Rental Period and any further term during which the Equipment is in the possession, custody or control of the Customer (“Risk Period”) until such time as the Equipment is returned to Oceanscan.
-                </p>
-
-                <p>6.1 Krishi Junction send knowledge and experience person with equipment to operate the Equipment.
-                </p>
-            </div>
-            
         </div>
     </div>
-</div>
-<!-- ///content equipment -->
 
-<ng-template #content let-offcanvas>
-    <div class="offcanvas-header">
-        <h4 class="offcanvas-title" id="offcanvas-basic-title">Welcome to {{username}}</h4>
-        <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+    <div class="container mt-5 mb-5">
+        <h1 class="text-center m-5 fw-bold" style="font-size:28px;">{{'OUR'|translate}} {{'VALUES'|translate}}</h1>
+        <div class="d-flex flex-wrap justify-content-around">
+            <div class="card value p-3 border-0 m-3">
+                <img src="../../assets/img/Group 11.png" alt="">
+                <h2 class="text-center fw-bold mt-3">{{'INTEGRITY'|translate}}</h2>
+            </div>
+            <div class="card value p-3 border-0 m-3">
+                <img src="../../assets/img/Group 10.png" alt="">
+                <h2 class="text-center fw-bold mt-3">{{'CUSTOMER CENTRICITY'|translate}}</h2>
+            </div>
+            <div class="card value p-3 border-0 m-3">
+                <img src="../../assets/img/Group 6.png" alt="">
+                <h2 class="text-center fw-bold mt-3">{{'SUSTANIBILITY'|translate}}</h2>
+            </div>
+            <div class="card value p-3 border-0 m-3">
+                <img src="../../assets/img/Group 7.png" alt="">
+                <h2 class="text-center fw-bold mt-3">{{'QUALITY'|translate}}</h2>
+            </div>
+        </div>
     </div>
-    <div class="offcanvas-body">
-        <div class="service">
+
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">{{'Welcome in'|translate}} {{single_items.name}}</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
             <div>
                 <div class="description">
-                    Equipment rent per day
+                    {{'Your items weight be calculated in kilo gram'|translate}}
                 </div>
-                <p>Please enter the details</p>
-                <h3 class="total">Name : <span class="tot">{{name}}</span></h3>
-                <h3 class="total">Total : <span class="tot">{{total |currency:"INR"}}</span></h3>
+                <p>Please select the item first to enter the items details</p>
+                <h3 class="total">{{'Total'|translate}} : <span class="tot">{{storageTotal |currency:"INR"}}</span></h3>
+                <mat-form-field appearance="legacy">
+                    <mat-label>{{'Enter your Mobile no.'|translate}}</mat-label>
+                    <input [(ngModel)]="mobile" #mob="ngModel" pattern="^(\+[\d]{1,5}|0)?[7-9]\d{9}$" required="true" matInput>
+                    <mat-hint *ngIf="mob.errors?.['required']">{{'Number is required.'|translate}}</mat-hint>
+                    <mat-hint *ngIf="!mob.invalid && (mob.dirty || mob.touched) && mob.errors?.['pattern']" class="danger">{{'Plz enter your correct number.'|translate} </mat-hint>
+                </mat-form-field>
 
-                <div class="items">
-                    <mat-form-field appearance="legacy" class="mt-3">
-                        <mat-label>Enter address</mat-label>
-                        <input #add="ngModel" [(ngModel)]="service.address" matInput placeholder="address here..." required="true">
-                        <mat-hint *ngIf="add.errors?.['required']">Address is Required</mat-hint>
-                        <mat-icon matSuffix></mat-icon>
-
-                    </mat-form-field>
-
-                    <mat-form-field appearance="legacy" class="mt-3">
-                        <mat-label>Enter mobile</mat-label>
-                        <input #mob="ngModel" [(ngModel)]="service.mobile" pattern="^(\+[\d]{1,5}|0)?[7-9]\d{9}$" matInput placeholder="mobile here..." required="true">
-                        <mat-hint *ngIf="!mob.invalid && (mob.dirty || mob.touched) && mob.errors?.['pattern']" class="danger">Plz enter your correct number. </mat-hint>
-                        <mat-hint *ngIf="mob.errors?.['required']">Number is required.</mat-hint>
-
-                        <mat-icon matSuffix></mat-icon>
-
-                    </mat-form-field>
+                <div class="items" *ngFor="let item of single_items.items;let index = index;trackBy:trackByIndex;">
+                    <mat-checkbox id="{{'chk'+item.name}}" [(ngModel)]="single_items[index]" [(ngModel)]="item.selected" class="example-margin">{{item.name}}</mat-checkbox>
 
                     <div class="duration">
                         <label for="">
+                        Starting Date <input type="date" (change)="dateValid()" [(ngModel)]="bdate" disabled="{{!item.selected}}" matInput>
+                    </label>
+                        <label for="" style="float: right">
+                        End Date <input type="date" (change)="dateValid()" [(ngModel)]="edate" disabled="{{!item.selected}}" matInput>
+                    </label>
+                    </div>
+
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Enter the weight</mat-label>
+                        <input (keyup)="checkWeight($event,item.name)" #weight disabled="{{!item.selected}}" required="true" matInput>
+                    </mat-form-field>
+
+
+                    <button [disabled]="true" id="{{'btn'+item.name}}" class="ok" (click)="itemsData(item,weight.value)">ok</button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <button class="book" (click)="save()" mat-raised-button>{{'Book Now'| translate}}</button>
+
+    </div>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <h1>Terms & Conditions of Rental of Equipment</h1>
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <p>4.1 Krishi Junction shall deliver the Equipment to the location set out in the Order or such other location as the parties may agree at any time after Karma notifies the Customer that the Equipment is ready for delivery.
+
+                    </p>
+                    <p>5.1 The Equipment shall at all times remain the property of Krishi Junction, and the Customer shall have no right, title or interest in or to the Equipment (save the right to possession and use of the Equipment subject to these Conditions).
+
+                    </p>
+                    <p>5.2 The Customer shall give Krishi Junction immediate notice in the event the Equipment is lost, stolen or damaged as a result of the Customer’s possession or use of the Equipment or if there is a claim or, for any reason, a threat
+                        of seizure of the Equipment.
+                    </p>
+                    <p>5.3 The risk of loss, theft, damage or destruction of the Equipment shall pass to the Customer on delivery of the Equipment to the Customer, or where applicable, the Customer’s appointed agent. The Equipment shall remain at the sole
+                        risk of the Customer during the Rental Period and any further term during which the Equipment is in the possession, custody or control of the Customer (“Risk Period”) until such time as the Equipment is returned to Oceanscan.
+                    </p>
+
+                    <p>6.1 Krishi Junction send knowledge and experience person with equipment to operate the Equipment.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- ///content equipment -->
+
+    <ng-template #content let-offcanvas>
+        <div class="offcanvas-header">
+            <h4 class="offcanvas-title" id="offcanvas-basic-title">Welcome to {{username}}</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="service">
+                <div>
+                    <div class="description">
+                        Equipment rent per day
+                    </div>
+                    <p>Please enter the details</p>
+                    <h3 class="total">Name : <span class="tot">{{name}}</span></h3>
+                    <h3 class="total">Total : <span class="tot">{{total |currency:"INR"}}</span></h3>
+
+                    <div class="items">
+                        <mat-form-field appearance="legacy" class="mt-3">
+                            <mat-label>Enter address</mat-label>
+                            <input #add="ngModel" [(ngModel)]="service.address" matInput placeholder="address here..." required="true">
+                            <mat-hint *ngIf="add.errors?.['required']">Address is Required</mat-hint>
+                            <mat-icon matSuffix></mat-icon>
+
+                        </mat-form-field>
+
+                        <mat-form-field appearance="legacy" class="mt-3">
+                            <mat-label>Enter mobile</mat-label>
+                            <input #mob="ngModel" [(ngModel)]="service.mobile" pattern="^(\+[\d]{1,5}|0)?[7-9]\d{9}$" matInput placeholder="mobile here..." required="true">
+                            <mat-hint *ngIf="!mob.invalid && (mob.dirty || mob.touched) && mob.errors?.['pattern']" class="danger">Plz enter your correct number. </mat-hint>
+                            <mat-hint *ngIf="mob.errors?.['required']">Number is required.</mat-hint>
+
+                            <mat-icon matSuffix></mat-icon>
+
+                        </mat-form-field>
+
+                        <div class="duration">
+                            <label for="">
                             Booking Date 
                      <input #date="ngModel" (change)="dateValid()" type="date" [(ngModel)]="bookingDate" matInput required="true">
                      <mat-hint *ngIf="date.errors?.['required']">Dates are Required.</mat-hint>
                         </label>
+                        </div>
+
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Enter the land Area in acre</mat-label>
+                            <input (keyup)="check($event)" #weight matInput>
+                        </mat-form-field>
+
+                        <mat-checkbox #term="ngModel" [(ngModel)]="selected" class="example-margin" required="true"><a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Terms and Condition</a></mat-checkbox><br>
+                        <mat-hint *ngIf="term.errors?.['required']">Chek-Out Our Terms & Condition.</mat-hint>
                     </div>
-
-                    <mat-form-field appearance="legacy">
-                        <mat-label>Enter the land Area in acre</mat-label>
-                        <input (keyup)="check($event)" #weight matInput>
-                    </mat-form-field>
-
-                    <mat-checkbox #term="ngModel" [(ngModel)]="selected" class="example-margin" required="true"><a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Terms and Condition</a></mat-checkbox><br>
-                    <mat-hint *ngIf="term.errors?.['required']">Chek-Out Our Terms & Condition.</mat-hint>
                 </div>
             </div>
+            <button class="book" (click)="saved()" mat-raised-button>Book Now</button>
         </div>
-        <button class="book" (click)="saved()" mat-raised-button>Book Now</button>
-    </div>
-</ng-template>
+    </ng-template>
 </div>
