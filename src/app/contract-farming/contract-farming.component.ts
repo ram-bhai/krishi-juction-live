@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { ConnectableObservable } from 'rxjs';
 import { ContractFarming } from 'src/app/model/contract-farming';
 import { UserService } from '../service/user.service';
 @Component({
@@ -63,7 +62,6 @@ export class ContractFarmingComponent implements OnInit {
       this.notifyService.success("Request sent..!!")
       else
       this.notifyService.error("Request aborted..!!")
-     
     })
   }
     else{
