@@ -19,7 +19,8 @@ import { StorageDetailsComponent } from './storage-details/storage-details.compo
 import { FavoriteComponent} from './favorite/favorite.component';
 import { WareStorageComponent } from './ware-storage/ware-storage.component';
 import { ContractListsComponent } from './contract-lists/contract-lists.component';
-const routes: Routes = [
+
+  const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'ware-storage/:id', component: WareStorageComponent },
   {path:'search/:search',component:SearchComponent},

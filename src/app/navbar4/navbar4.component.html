@@ -2,31 +2,30 @@
     <div class="nav_bar">
         <i class="fa-solid fa-bars sidebarOpen" (click)="toggle2()"></i>
         
-        <img class="logo mb-4" src="../../assets//img/Group 622 (8).png" width="100" alt="">
+        <img class="logo mb-4" src="../../assets//img/Group 622 (8).png" routerLink="" width="100" alt="">
 
         <div class="menu" [class.show]="close">
             <div class="logo_toggle">
                 <img class="logo " src="../../assets//img/Group 622 (8).png" width="100" alt="">
-                <i class="fa-solid fa-x sidebar" (click)="toggle2()"></i>
+                <i class="fa-solid fa-x sidebar" routerLink="" (click)="toggle2()"></i>
             </div>
 
             <ul class="nav_links">
                 <li class="link_items dropdown"><a class="nav_a" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" href="">{{'CONTRACT FARMING' | translate}}</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" style="cursor: pointer" routerLink="contract-farming">Registration</a></li>
+                        <li><a class="dropdown-item" style="cursor: pointer" routerLink="contract-farming">{{'Registration'|translate}}</a></li>
 
-                        <li><a class="dropdown-item" style="cursor: pointer" routerLink="contract-list">Land list</a></li>
+                        <li><a class="dropdown-item" style="cursor: pointer" routerLink="contract-list">{{'Land list'|translate}}</a></li>
 
                     </ul>
                 </li>
-                <!-- <li class="link_items"><a class="nav_a" routerLink="contract-farming" href="">{{'CONTRACT FARMING' | translate}}</a></li> -->
+
                 <li class="link_items"><a class="nav_a" routerLink="services" href="">{{'EQUIPMENT'| translate}}</a></li>
                 <li class="link_items dropdown"><a class="nav_a" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" href="">{{'STORAGE' | translate}}</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><a class="dropdown-item" style="cursor: pointer" (click)="cold_Storage()">{{'Cold Storage'|translate}}</a></li>
 
                         <li><a class="dropdown-item" style="cursor: pointer" (click)="ware_Storage()">{{'Ware House'|translate}}</a></li>
-
                     </ul>
                 </li>
                 <li>
@@ -37,7 +36,6 @@
                             <li><a *ngIf='!isLoggedIn()' class="dropdown-item" routerLink="sign-in">{{'SignIn'|translate}}</a></li>
                             <li><a *ngIf='isLoggedIn()' class="dropdown-item" (click)="openDialog()">{{'SignOut'|translate}}</a></li>
                             <li><a *ngIf='isLoggedIn()' class="dropdown-item" routerLink="mystorage">{{'My Storage'|translate}}</a></li>
-
                             <li><a *ngIf='isLoggedIn()' class="dropdown-item" routerLink="favorite">{{'Your Favorite'|translate}}</a></li>
                             <li><a *ngIf='isLoggedIn()' class="dropdown-item" routerLink="profile">{{'Your Profile'|translate}}</a></li>
                             <li><a *ngIf='isLoggedIn()' class="dropdown-item" routerLink="history">{{'Your Service'|translate}}</a></li>
@@ -66,14 +64,12 @@
                 <div class="searchToggle" [class.active]="appear" (click)="toggle()">
                     <i class="fa-solid fa-x cancel"></i>
                     <i class="fa-solid fa-magnifying-glass search"></i>
-
                 </div>
                 <div class="search_field" [class.active]="appear">
                     <input (keyup)="dataCalled()" [(ngModel)]="data" type="text" placeholder="Search..." autocomplete="off">
                     <i class="fa-solid fa-microphone" (click)="voice()"></i>
                 </div>
             </div>
-
         </div>
     </div>
 </nav>
