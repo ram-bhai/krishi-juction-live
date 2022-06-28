@@ -1,0 +1,55 @@
+section{
+    width:400px;
+}
+
+.items_card{
+    width:80%;
+    margin:auto;
+}
+
+mat-label{
+    color:black;
+    font-family: 'Caveat', cursive;
+    font-family: 'Nunito', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+input{
+    color:black;
+    font-family: 'Caveat', cursive;
+    font-family: 'Nunito', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.btn-purple{
+    background-color:#490b3d;
+    color:white;
+}
+
+.btn-pink{
+    background-color:#bd1e51;
+    color:white;
+    transition: all 0.5s ease-in-out;
+}
+
+.btn-orange{
+    background-color:#f1b814;
+    color:white;
+}
+
+.hover:hover{
+    box-shadow:5px 5px 15px rgba(0,0,0,0.5);
+}
+
+button:disabled{
+    opacity:0.5;
+    box-shadow:none;
+}

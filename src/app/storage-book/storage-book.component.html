@@ -1,0 +1,57 @@
+<mat-dialog-content >
+    <section class="p-2">
+        <h2 class="fw-bold ms-2">Welcome in Your storage</h2>
+        <p class="ms-2">Your items weight will be calculated in Kilogram.</p>
+        <div class="items_wrap p-2">
+    
+            <p >{{'Please select the item first to enter the items details'|translate}}</p>
+            <h3 class="">{{'Total'|translate}} : <span>{{total|currency:'INR'}}</span></h3>
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your mobile number</mat-label>
+                    <input matInput [(ngModel)]="mobile">
+                </mat-form-field>
+            </p>
+    
+            <div class="card items_card p-2 border-0 shadow-lg mt-5" *ngFor="let item of data.items">
+    
+                <p>
+                    <mat-checkbox id="{{'chk'+item.name}}" [(ngModel)]="item.selected" class="example-margin">{{item.name}}</mat-checkbox>
+                </p>
+                
+                
+
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter a date range</mat-label>
+                        <mat-date-range-input [rangePicker]="picker">
+                            <input matStartDate [(ngModel)]="item.startdate" disabled="{{!item.selected}}" placeholder="Start date">
+                            <input matEndDate [(ngModel)]="item.enddate" disabled="{{!item.selected}}" placeholder="End date">
+                        </mat-date-range-input>
+                        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+                    </mat-form-field>
+                </p>
+
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter the weight</mat-label>
+                        <input matInput (keyup)="checkWeight($event,item.name)" #weight [disabled]="!item.selected" placeholder="Placeholder">
+                    </mat-form-field>
+                </p>
+    
+                <!-- <div class="form-group mt-2">
+                    <label for="" class="form-label">
+                        Weight
+                    </label>
+                    <input type="number" (keyup)="checkWeight($event,item.name)" #weight [disabled]="!item.selected" class="ms-2">
+                </div> -->
+    
+                <button class="btn btn-pink hover mt-2" [disabled]="true" id="{{'btn'+item.name}}" (click)="itemsData(item,weight.value)">Add</button>
+            </div>
+    
+            <button [disabled]="valid" (click)="save()" class="btn btn-pink hover mt-5 float-end"> Book </button>
+        </div>
+    </section>
+</mat-dialog-content>
