@@ -2,20 +2,19 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
-                <h1>Name : {{data.userId.name}}</h1>
-                <p>Storage Name : {{data.storage_id.name}}</p>
-                <p>Storage Address : {{data.storage_id.location}}</p>
-                <p>Storage Booking date : {{data.date | date : 'mediumDate'}}</p>
-                <p>Booking amount : {{data.total}}</p>
+                <h1><strong>Name</strong> : {{data.userId.name}}</h1>
+                <p><strong>Storage Name</strong> : {{data.storage_id.name}}</p>
+                <p><strong>Storage Address</strong> : {{data.storage_id.location}}</p>
+                <p><strong>Storage Booking date</strong> : {{data.date | date : 'mediumDate'}}</p>
+                <p><strong>Booking amount</strong> : {{data.total}}</p>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 Your items details
                 <div class="items" *ngFor="let items of data.items">
-                    <p>Name : {{items.name}}</p>
-                    <p>Your product amount : {{items.charge}}</p>
-                    <p>Your product weight : {{items.weight}}</p>
-                    <p>Start Date : {{items.bookingDate| date : 'mediumDate'}}</p>
-                    <p>End Date : {{items.date| date : 'mediumDate'}}</p>
+                    <p><strong>Name</strong> : {{items.name}}</p>
+                    <p><strong>Your product weight</strong> : {{items.weight}} kg</p>
+                    <p><strong>Start Date</strong> : {{items.bookingDate| date : 'mediumDate'}}</p>
+                    <p><strong>End Date</strong> : {{items.date| date : 'mediumDate'}}</p>
                 </div>
             </div>
         </div>

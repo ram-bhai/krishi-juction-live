@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 import {StorageCommentComponent} from '../storage-comment/storage-comment.component';
 import {NgbOffcanvas, OffcanvasDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { StorageBookComponent } from '../storage-book/storage-book.component';
 declare let Razorpay:any
 @Component({
   selector: 'app-storage',
@@ -69,23 +70,28 @@ starRating = 0;
 
   items:any=[]
   single_items:any='';
-  total:any=0 ;
+  total:any ;
   mobile:any;
   duration:any = '7';
   id:any;
   closeResult = '';
 
-  open(content:any) {
-    if(sessionStorage.getItem('id')){
-      this.offcanvasService.open(content, {ariaLabelledBy: 'offcanvas-basic-title'}).result.then((result) => {
-        this.closeResult = `Closed with: ${result}`;
-      }, (reason) => {
-        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      });
-    }else{
-      this.router.navigate(['sign-in']);
-    }
+  open(content:any){
+    this.dialog.open(StorageBookComponent,{data:content});
   }
+
+  // open(content:any) {
+    
+  //   if(sessionStorage.getItem('id')){
+  //     this.offcanvasService.open(content, {ariaLabelledBy: 'offcanvas-basic-title'}).result.then((result) => {
+  //       this.closeResult = `Closed with: ${result}`;
+  //     }, (reason) => {
+  //       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  //     });
+  //   }else{
+  //     this.router.navigate(['sign-in']);
+  //   }
+  // }
 
   private getDismissReason(reason: any): string {
     if (reason === OffcanvasDismissReasons.ESC) {

@@ -26,7 +26,7 @@ export class ContractListsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  count=0;
+  count=false;
   reqList:any;
   list:any='';
   public approvedList:any[]=[];
@@ -37,15 +37,7 @@ export class ContractListsComponent implements OnInit {
 
 
 
-  checkreq():boolean{
-    for(var i=0;i<this.reqList.length;i++){
-      if(this.reqList[i].userId == sessionStorage.getItem("id"))
-        return false;
-      if(this.count == 1)
-        return false;
-    }
-    return true;
-  }
+  
 
   bookreq(id:any){
     var uid = this.userService.checkToken();
@@ -55,7 +47,7 @@ export class ContractListsComponent implements OnInit {
       this.contractFarmingService.getlandreq(sessionStorage.getItem('id'),id)
       .subscribe(data =>{
         console.log(data);
-        this.count = 1;
+        this.count = true;
       })
     }
   }

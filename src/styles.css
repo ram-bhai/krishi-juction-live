@@ -7,6 +7,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Nunito:wght@200;300;400;600;700&family=Poppins:wght@100;400&family=Roboto:wght@300;400;500&display=swap');
+
+*{
+  font-family: 'Caveat', cursive;
+  font-family: 'Nunito', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
 ::ng-deep :root{
   --orange:#f1b814;
   --pink:#bd1e51;

@@ -11,13 +11,13 @@
             </thead>
             <tbody>
             <tr *ngFor="let list of approvedList|approved">
-                <th scope="row">{{list.location}}</th>
-                <td >50000</td>
-                <td >{{list.start_date | date : 'dd/MMMM/yyyy'}}</td>
-                <td >{{list.end_date | date : 'dd/MMMM/yyyy'}}</td>
+                <th scope="row" class="mt-2">{{list.location}}</th>
+                <td class="mt-2">50000</td>
+                <td class="mt-2">{{list.start_date | date : 'dd/MMMM/yyyy'}}</td>
+                <td class="mt-2" >{{list.end_date | date : 'dd/MMMM/yyyy'}}</td>
                 <td >
-                    <button class="btn btn-outline-danger" *ngIf="checkreq()" (click)="bookreq(list._id)">Apply</button>
-                    <p class="text-success" *ngIf="!checkreq()"><i class="fa-solid fa-check"></i>Request sended</p>
+                    <button class="btn btn-outline-danger" *ngIf="!count" (click)="bookreq(list._id)">Apply</button>
+                    <a class="btn btn-success" *ngIf="count"><i class="fa-solid fa-check"></i> Request sended</a>
                 </td>
                 <td>
                     <button type="button" (click)="getDetail(list)" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
