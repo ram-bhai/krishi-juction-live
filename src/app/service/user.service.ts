@@ -10,8 +10,8 @@ export class UserService {
   book_service =  "http://localhost:3000/order/payment-status";
   // search = "http://localhost:3000/customer/search";
   search = "https://krishi-backend.herokuapp.com/customer/search";
-  contractFarming = 'https://localhost:3000/contract/contract-farming';
- //contractFarming = "https://krishi-backend.herokuapp.com/contract/contract-farming";
+  contractFarming = 'http://localhost:3000/contract/contract-farming';
+//  contractFarming = "https://krishi-backend.herokuapp.com/contract/contract-farming";
   // profile = 'http://localhost:3000/customer/view/';
   profile = "https://krishi-backend.herokuapp.com/customer/view/"
   sign_Up = 'http://localhost:3000/customer/signup';

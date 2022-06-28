@@ -36,46 +36,45 @@
             <div class="details">
 
 
-                    <mat-form-field appearance="legacy">
-                        <mat-label>{{'Enter your farm area'|translate}}</mat-label>
-                        <input #area="ngModel" (blur)="areacheck()" [(ngModel)]="contractFarming.area" type="text" placeholder="farm area in square feet" matInput required="true">
-                        <mat-hint *ngIf="area.errors?.['required']">{{'Area is required.'|translate}}</mat-hint>
-                        <!-- <mat-hint *ngIf="area.errors?.['required']">{{'Area is required.'|translate}}</mat-hint> -->
-                        <div *ngIf="are"> Your land not sufficient</div>
-                    </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <mat-label>{{'Enter your farm area'|translate}}</mat-label>
+                    <input #area="ngModel" (blur)="areacheck()" [(ngModel)]="contractFarming.area" type="text" placeholder="farm area in square feet" matInput required="true">
+                    <mat-hint *ngIf="area.errors?.['required']">{{'Area is required.'|translate}}</mat-hint>
+                    <!-- <mat-hint *ngIf="area.errors?.['required']">{{'Area is required.'|translate}}</mat-hint> -->
+                </mat-form-field>
 
-                    <div class="form-group mt-3 ms-1">
-                        <label for="" class="form-label">{{'Please select a picture of your farm.'|translate}}</label>
-                        <input type="file" class='images' name="image" (change)="selectImage($event)">
-                        <div *ngIf="Im">!Please Select Image</div>
-                    </div>
-
-
-                    <mat-form-field appearance="legacy" class="datebox">
-                        <mat-label>{{'Enter a duration date'|translate}}</mat-label>
-                        <mat-date-range-input [rangePicker]="picker">
-                            <input #date1="ngModel" (change)="dateValid()"  [(ngModel)]="contractFarming.start_date" matStartDate placeholder="Start date" required="true">
-                            <input #date2="ngModel"  [(ngModel)]="contractFarming.end_date" matEndDate placeholder="End date" required="true">
-                            <mat-hint *ngIf="date1.errors?.['required']">{{'Dates are required.'|translate}}</mat-hint>
-                        </mat-date-range-input>
-                        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-date-range-picker #picker></mat-date-range-picker>
-                    </mat-form-field>
-
-                    <mat-form-field appearance="legacy">
-                        <mat-label>{{'Enter your description here'|translate}}</mat-label>
-                        <textarea [(ngModel)]="contractFarming.description" matInput></textarea>
-                    </mat-form-field>
+                <div class="form-group mt-3 ms-1">
+                    <label for="" class="form-label">{{'Please select a picture of your farm.'|translate}}</label>
+                    <input type="file" class='images' name="image" (change)="selectImage($event)">
+                    <!-- <div *ngIf="Im">!Please Select Image</div> -->
+                </div>
 
 
-                    <mat-checkbox (click)="checkf()" class="example-margin mb-3"><a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">{{'I agree with terms and conditions'|translate}}</a>
-                    </mat-checkbox>
-                    <!-- <button mat-raised-button (click)="save()">{{'Send Request'|translate}}</button> -->
-                    <button mat-raised-button [disabled]="are||!check2||Im||email.errors?.['pattern']||date1.errors?.['required']||area.errors?.['required']||add.errors?.['required']||mob.errors?.['required']||name.errors?.['required']||email.errors?.['required']" (click)="save()">{{'Send Request'|translate}}</button>
+                <mat-form-field appearance="legacy" class="datebox">
+                    <mat-label>{{'Enter a duration date'|translate}}</mat-label>
+                    <mat-date-range-input [rangePicker]="picker">
+                        <input #date1="ngModel" (change)="dateValid()" [(ngModel)]="contractFarming.start_date" matStartDate placeholder="Start date" required="true">
+                        <input #date2="ngModel" [(ngModel)]="contractFarming.end_date" matEndDate placeholder="End date" required="true">
+                        <mat-hint *ngIf="date1.errors?.['required']">{{'Dates are required.'|translate}}</mat-hint>
+                    </mat-date-range-input>
+                    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                </mat-form-field>
+
+                <mat-form-field appearance="legacy">
+                    <mat-label>{{'Enter your description here'|translate}}</mat-label>
+                    <textarea [(ngModel)]="contractFarming.description" matInput></textarea>
+                </mat-form-field>
 
 
-                
+                <mat-checkbox (click)="checkf()" class="example-margin mb-3"><a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">{{'I agree with terms and conditions'|translate}}</a>
+                </mat-checkbox>
+                <button mat-raised-button (click)="save()">{{'Send Request'|translate}}</button>
+                <!-- <button mat-raised-button [disabled]="are||!check2||Im||email.errors?.['pattern']||date1.errors?.['required']||area.errors?.['required']||add.errors?.['required']||mob.errors?.['required']||name.errors?.['required']||email.errors?.['required']" (click)="save()">{{'Send Request'|translate}}</button> -->
+
+
+
 
             </div>
         </div>

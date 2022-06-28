@@ -14,7 +14,7 @@
                 <img src="{{data.orderList[0].tool_id.images}}" width="200px" height="250px">
                 <div class="items" *ngFor="let items of data.items">
                     <p>Name : {{items.name}}</p>
-                    <p>Your product amount : {{items.weight}}</p>
+                   
                     <p>Start Date : {{items.bookingDate| date : 'mediumDate'}}</p>
                     <p>End Date : {{items.date| date : 'mediumDate'}}</p>
                 </div>
