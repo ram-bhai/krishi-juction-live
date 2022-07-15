@@ -217,48 +217,111 @@ starRating = 0;
    
   title = 'payment';
   onPay(amount:any){
-   if(this.isLoggedIn()){
-    this.userService.createOrder(amount).subscribe(data=>{
-      console.log(data.id);
-      console.log(data);
-    
-      var options = {
+    if(this.isLoggedIn()){
+     this.userService.createOrder(amount).subscribe(data=>{
+       console.log(data.id);
+       console.log(data);
+       
+       var options = {
+         
+        "key": "rzp_test_MqoJug1nXNqVws", // Enter the Key ID generated from the Dashboard
+        "amount": "100", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "Acme Corp",
+        "description": "Test Transaction",
+        "image": "https://example.com/your_logo",
+        "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         
-       "key": "rzp_test_MqoJug1nXNqVws", // Enter the Key ID generated from the Dashboard
-       "amount": "10000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-       "currency": "INR",
-       "name": "Acme Corp",
-       "description": "Test Transaction",
-       "image": "https://example.com/your_logo",
-       "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-       "callback_url": "http://localhost:3000/order/payment-status",
-       "prefill": {
-           "name": "Devika Kushwah",
-           "email": "devikakushwah29@gmail.com",
-           "contact": "8770784399"
+        handler: (response: {
+         razorpay_payment_id: any;
+         razorpay_order_id: any;
+         razorpay_signature: any;
+         razorpay_prefill: any;
+       }) => {
+         console.log(response);
+         sessionStorage.setItem('payment-detail', JSON.stringify(response));
+           this.userService.User_order_Sys(response).subscribe(data=>{
+             // this.notifyService.success("Payment Successfully..!!")
+              console.log(data);
+           });
        },
-       "notes": {
-           "address": "Razorpay Corporate Office"
-       },
-       "theme": {
-           "color": "#3399cc"
-       }
-   };
    
-   var rzp1 = new Razorpay(options);
+        "prefill": {
+            "name": "Devika Kushwah",
+            "email": "devikakushwah29@gmail.com",
+            "contact": "8770784399"
+        },
+        "notes": {
+            "address": "Razorpay Corporate Office"
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+    };
+    
+    var rzp1 = new Razorpay(options);
+  
+      rzp1.open();
+     })
+    }
+    
+    else{
+     this.notifyService.success("First Login is required..!!");
+          
+      this.router.navigate(['signIn']);
+    }
+   } 
+
  
-     rzp1.open();
-    })
-   }
-   else{
-     alert("First login required");
-     this.router.navigate(['signIn']);
-   }
-  }
  
+
+  // onPay(amount:any){
+  //  if(this.isLoggedIn()){
+  //   this.userService.createOrder(amount).subscribe(data=>{
+  //     console.log(data.id);
+  //     console.log(data);
+    
+  //     var options = {
+        
+  //      "key": "rzp_test_MqoJug1nXNqVws", // Enter the Key ID generated from the Dashboard
+  //      "amount": "10000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+  //      "currency": "INR",
+  //      "name": "Acme Corp",
+  //      "description": "Test Transaction",
+  //      "image": "https://example.com/your_logo",
+  //      "order_id": data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+  //      "callback_url": "http://localhost:3000/order/payment-status",
+  //      "prefill": {
+  //          "name": "Devika Kushwah",
+  //          "email": "devikakushwah29@gmail.com",
+  //          "contact": "8770784399"
+  //      },
+  //      "notes": {
+  //          "address": "Razorpay Corporate Office"
+  //      },
+  //      "theme": {
+  //          "color": "#3399cc"
+  //      }
+  //  };
+   
+  //  var rzp1 = new Razorpay(options);
+ 
+  //    rzp1.open();
+  //   })
+  //  }
+  //  else{
+  //    alert("First login required");
+  //    this.router.navigate(['signIn']);
+  //  }
+  // }
+ 
+
+
   openDialog(id:any): void {
     this.dialog.open(StorageCommentComponent,{data:id});
   }
+
+
   
 //   title = 'payment';
 // onPay(amount:any){
